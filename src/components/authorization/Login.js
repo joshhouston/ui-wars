@@ -20,6 +20,7 @@ class Login extends Component {
                     <input placeholder='username' />
                     Password
                     <input placeholder='password' type='password' />
+                    
                 </div>
             </div>
         )

@@ -54,7 +54,7 @@ class Registration extends Component {
                     Email
                     <input onChange={this.handleEmail} placeholder='email' />
                 </div>
-                <button onClick={this.registerUser} >Register</button>
+                <button onClick={this.registerDeveloper} >Register</button>
             </div>
         )
     }
