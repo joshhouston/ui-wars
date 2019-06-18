@@ -4,6 +4,7 @@ import Landing from './components/authorization/Landing';
 import Registration from './components/authorization/Registration';
 import Login from './components/authorization/Login';
 import Dashboard from './components/dashboard/Dashboard';
+import Challenge from './components/create/Challenge';
 
 export default (
     <Switch>
@@ -11,5 +12,6 @@ export default (
         <Route path='/register' component={Registration} />
         <Route path='/login' component={Login} />
         <Route path='/dashboard' component={Dashboard} />
+        <Route path='/challenge' component={Challenge} />
     </Switch>
 )

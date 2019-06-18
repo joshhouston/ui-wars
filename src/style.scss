@@ -12,6 +12,11 @@ body {
     background: linear-gradient(180deg, rgba(41,42,53,1) 0%, rgba(32,33,44,1) 35%, rgba(23,23,27,1) 100%);
 }
 
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
 .nav-main {
     display: flex;
     flex-direction: column;
@@ -33,7 +38,7 @@ body {
       height: 5em;
 
       &:hover {
-          background: #F79D34
+          cursor: pointer;
       }
   }
 
@@ -70,4 +75,9 @@ body {
       height: 25px;
       width: 25px;
       margin-top: 10em;
+  }
+
+  .addButton {
+      height: 20px;
+      width: 60px;
   }
