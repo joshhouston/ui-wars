@@ -81,3 +81,31 @@ body {
       height: 20px;
       width: 60px;
   }
+
+  .uploader {
+      height: 3vh;
+      width: 180px;
+  }
+
+//   DASHBOARD
+.dashboard {
+    display: flex;
+    flex-direction: row;
+}
+
+.dashMain {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashHeader {
+    display: flex;
+    box-shadow: 1px 1px 10px black ;  
+    background-color: #20222F;
+    width: 50vw;
+    height: 20vh;
+    margin-top: 5vh;
+}

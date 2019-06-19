@@ -16,7 +16,7 @@ class Dashboard extends Component {
     }
 
     componentDidMount() {
-        this.props.getUser();
+        // this.props.getUser();
     }
 
     logOutUser() {
@@ -35,10 +35,19 @@ class Dashboard extends Component {
         //     return <Redirect to='/' />
         // }
         return (
-            <div>
+
+            <div className='dashboard'>
+                <Navigation logOut={this.logOutUser} />
+            
+                <div className="dashMain">
+                    <div className="dashHeader">
+
+
+                    </div>
+                </div>
 
                 {/* <button onClick={this.logOutUser} >Logout</button> */}
-                <Navigation logOut={this.logOutUser} />
+                
             </div>
         )
     }

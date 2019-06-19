@@ -15,7 +15,7 @@ export function getUser() {
 }
 
 export default function reducer(state=initialState, action) {
-    console.log(state);
+    // console.log(state);
     switch(action.type) {
         case `${GET_USER}_FULFILLED`:
             return {
