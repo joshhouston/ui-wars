@@ -3,7 +3,7 @@ import Navigation from '../navigation/Navigation'
 import axios from 'axios'
 import {connect} from 'react-redux';
 import {getUser} from '../../redux/reducer';
-import {Redirect} from 'react-router-dom';
+// import {Redirect} from 'react-router-dom';
 
 
 class Dashboard extends Component {

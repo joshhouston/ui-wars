@@ -17,6 +17,8 @@ body {
     flex-direction: row;
 }
 
+//Navigation
+
 .nav-main {
     display: flex;
     flex-direction: column;
@@ -82,10 +84,28 @@ body {
       width: 60px;
   }
 
+//   Challenge.js upload section
+  .uploading {
+      display: flex;
+      flex-direction: column;
+  }
+
   .uploader {
       height: 3vh;
       width: 180px;
   }
+
+  .challengeForm {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .myChallenges {
+      height: 20vh;
+      width: 20vw;
+      background: maroon;
+  }
+
 
 //   DASHBOARD
 .dashboard {

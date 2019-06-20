@@ -30,7 +30,8 @@ app.post('/auth/login', loginUsers);
 app.post('/auth/logout', logOut);
 app.get('/auth/user', getUser);
 
-app.put('/api/user', uc.updateUser)
+app.get('/api/user/challenge', uc.get_User)
+app.put('/api/user', uc.addChallenge)
 
 
 
