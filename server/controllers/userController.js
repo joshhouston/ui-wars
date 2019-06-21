@@ -22,6 +22,17 @@ module.exports = {
         
     },
 
+    addToLikes:async (req, res) => {
+        const {challenge_id, developer_id, imageURL, description} = req.body.likedValues
+        const db = req.app.get('db')
+        if(req.session.user) {
+            const user = await db.add_to_likes([challenge_id, developer_id, imageURL, description])
+            return res.status(200).json(user)
+        }else {
+            return res.status(404).json('not logged in')
+        }
+    },
+
     getChallenge: (req, res) => {
         const db = req.app.get('db')
         // if(req.session.user) {
