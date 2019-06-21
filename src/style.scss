@@ -9,12 +9,13 @@ $mainPage: #23232E;
 
 body {
     background: rgb(41,42,53);
-    background: linear-gradient(180deg, rgba(41,42,53,1) 0%, rgba(32,33,44,1) 35%, rgba(23,23,27,1) 100%);
+    background: linear-gradient(180deg, rgba(41,42,53,1) 0%, rgba(32,33,44,1) 35%, rgba(23,23,27,1) 100%) fixed;
 }
 
 .row {
     display: flex;
     flex-direction: row;
+    height: 100vh;
 }
 
 //Navigation
@@ -25,7 +26,9 @@ body {
     background: rgb(47,49,62);
     background: linear-gradient(180deg, rgba(47,49,62,1) 0%, rgba(36,39,52,1) 35%, rgba(31,33,46,1) 100%);
     height: 100vh;
-    width: 10vw;
+    width: 100px;
+    position: fixed;
+    margin-right: 10vw;
   }
 
   .nav-row {
@@ -76,7 +79,7 @@ body {
   .logout {
       height: 25px;
       width: 25px;
-      margin-top: 10em;
+      margin-top: 7em;
   }
 
   .addButton {
@@ -85,6 +88,10 @@ body {
   }
 
 //   Challenge.js upload section
+
+.columnForm {
+    @include flexCenter();
+}
   .uploading {
       display: flex;
       flex-direction: column;
@@ -128,4 +135,47 @@ body {
     width: 50vw;
     height: 20vh;
     margin-top: 5vh;
+}
+
+// Home Page
+
+.homeChallenges {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 10vw;
+}
+
+.challengeDisplay {
+    margin: 1em;
+}
+
+.challengeImg {
+    position: relative;
+    display: inline-block;
+    height: 300px;
+    width: 300px;
+    &:hover {
+        cursor: pointer;
+        
+    }
+}
+
+.challenge-options {
+    display: flex;
+    // display: none;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+.my-likes {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 10vw;
 }

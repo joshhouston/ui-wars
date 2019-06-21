@@ -30,8 +30,6 @@ class Challenge extends Component {
             .then(response => {
                 const user = response.data[0]
                 this.setState({challenges:response.data})
-                console.log(this.state.challenges)
-                console.log(user)
                 this.setState({id: user.developer_id, description: user.description, links: user.links, imageURL: user.imageURL})
             })
             .catch(err => {
@@ -60,8 +58,6 @@ class Challenge extends Component {
         firebase.storage().ref('images').child(filename).getDownloadURL()
             .then(url => this.setState({
                 imageURL: url
-            }, () => {
-                // this.sendToDatabase();
             }))
     }
     
@@ -98,7 +94,7 @@ class Challenge extends Component {
 
                 <Navigation />
 
-                <div className="column">
+                <div className="columnForm">
                     <form className='challengeForm' >
                         
                         <input
@@ -113,19 +109,20 @@ class Challenge extends Component {
                         />
                     </form>
                     <button onClick={this.sendToDatabase} >Submit</button>
+                    
+                    <div className='uploading'>
+                        {this.state.image && <img alt='uploaded-img' src={this.state.imageURL} />}
+                        <FileUploader 
+                            accept="image/*"
+                            name='image'
+                            storageRef={firebase.storage().ref('images')}
+                            onUploadStart={this.handleUploadStart}
+                            onUploadSuccess={this.handleUploadSuccess}
+                            className='uploader'
+                        />
+                    </div>
                 </div>
                 
-                <div className='uploading'>
-                    {this.state.image && <img alt='uploaded-img' src={this.state.imageURL} />}
-                    <FileUploader 
-                        accept="image/*"
-                        name='image'
-                        storageRef={firebase.storage().ref('images')}
-                        onUploadStart={this.handleUploadStart}
-                        onUploadSuccess={this.handleUploadSuccess}
-                        className='uploader'
-                    />
-                </div>
                 
                 {/* <div className="myChallenges">
                     {this.state.challenges.map((challenge, index) => {

@@ -25,9 +25,11 @@ function Navigation(props) {
                     </div>
                 </Link>
 
-                <div className="nav-row">
-                        <img src={heart} alt=""/>
-                 </div>
+                <Link to='/liked'>
+                    <div className="nav-row">
+                            <img src={heart} alt=""/>
+                    </div>
+                </Link>
                 
                 <Link to='/challenge'>
                     <div className="nav-row">

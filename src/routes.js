@@ -6,6 +6,7 @@ import Login from './components/authorization/Login';
 import Dashboard from './components/dashboard/Dashboard';
 import Challenge from './components/create/Challenge';
 import Home from './components/home/Home';
+import Liked from './components/liked/Liked';
 
 export default (
     <Switch>
@@ -15,5 +16,6 @@ export default (
         <Route path='/dashboard' component={Dashboard} />
         <Route path='/challenge' component={Challenge} />
         <Route path='/home' component={Home} />
+        <Route path='/liked' component={Liked} />
     </Switch>
 )
