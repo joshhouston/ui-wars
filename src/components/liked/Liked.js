@@ -16,7 +16,19 @@ class Liked extends Component {
             .then(response => {
                 const user = response.data[0];
                 console.log(user);
+                axios
+                    .get('/api/user/likes')
+                    .then(response => {
+                        console.log(response.data)
+                        this.setState({myLikes: response.data})
+                    })
             })
+
+    //         .get('/api/user/likes')
+    //         .then(response => {
+    //             const likes = response.data[0]
+    //             console.log(likes)
+    //         })
     }
 
     render(){
@@ -25,7 +37,19 @@ class Liked extends Component {
                 <Navigation />
 
                 <div className="my-likes">
-                    test
+                    {this.state.myLikes.map((likes, index) => {
+                        return (
+                            <div className="challengeDisplay" key={index} >
+                                <img src={likes.imageurl} alt="liked-images" className="challengeImg"/>
+                                <div className="challenge-options">
+                                    <h4>Title: {likes.description} </h4>
+                                    <div className="option-buttons">
+                                        <button>Unlike</button>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
         )

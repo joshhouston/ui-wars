@@ -3,7 +3,7 @@ const express = require('express');
 const massive = require('massive');
 const session = require('express-session');
 const {registerDeveloper, loginUsers, logOut, getUser} = require('./controllers/authController');
-const uc = require('./controllers/userController')
+const uc = require('./controllers/userController');
 
 const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env;
 
@@ -21,7 +21,7 @@ app.use(
             maxAge: 1000 * 60 * 60 * 24 * 7
         }
     })
-)
+);
 
 
 // ENDPOINTS
@@ -30,10 +30,15 @@ app.post('/auth/login', loginUsers);
 app.post('/auth/logout', logOut);
 app.get('/auth/user', getUser);
 
+//Challenge Endpoints
 app.get('/api/challenges', uc.getChallenge);
 app.get('/api/user/challenge', uc.get_User);
 app.put('/api/user', uc.addChallenge);
-app.put('/api/liked', uc.addToLikes)
+
+//Liked Endpoints
+app.put('/api/liked', uc.addToLikes);
+app.get('/api/user/likes', uc.getLikes)
+
 
 
 

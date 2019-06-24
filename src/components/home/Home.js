@@ -21,7 +21,7 @@ class Home extends Component {
             .then(response => {
                 const user = response.data
                 for(let i=0; i < user.length; i++) {
-                    // console.log(user[i])
+                    
                     this.setState({
                         allChallenges: response.data,
                         challenge_id: user[i].challenge_id,

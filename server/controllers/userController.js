@@ -22,21 +22,6 @@ module.exports = {
         
     },
 
-    addToLikes:async (req, res) => {
-        console.log(req.body)
-        const {challenge_id} = req.body
-        const db = req.app.get('db')
-        if(req.session.user) {
-            const liked = await db.add_to_likes([challenge_id, req.session.user.developer_id])
-            if(liked[0]){
-                return res.sendStatus(200)
-            }
-        }else {
-            console.log('not logged in')
-            return res.status(404).json('not logged in')
-        }
-    },
-
     getChallenge: (req, res) => {
         const db = req.app.get('db')
         // if(req.session.user) {
@@ -53,6 +38,35 @@ module.exports = {
                 console.log(err)
             })
 
+    },
+
+    addToLikes: async (req, res) => {
+        console.log(req.body)
+        const {challenge_id} = req.body
+        const db = req.app.get('db')
+        if(req.session.user) {
+            const liked = await db.add_to_likes([challenge_id, req.session.user.developer_id])
+            if(liked[0]){
+                return res.sendStatus(200)
+            }
+        }else {
+            console.log('not logged in')
+            return res.status(404).json('not logged in')
+        }
+    },
+
+    getLikes: async (req, res) => {
+        console.log(req.body)
+        const db = req.app.get('db')
+        if(req.session.user) {
+            const likes = await db.get_likes(req.session.user.developer_id)
+            return res.status(200).json(likes)
+        }
+        else {
+            return res.status(404).json('not logged in')
+        }
     }
+
+    
     
 }
