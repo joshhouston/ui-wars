@@ -29,8 +29,9 @@ class Login extends Component {
     loginUser() {
         axios
             .post('/auth/login', {username: this.state.username, password: this.state.password}).then(() => {
-                this.setState({redirect: true}).catch(() => {alert('Login unsuccessful. Try again')})
+                this.setState({redirect: true})
             })
+            .catch(() => alert('Login unsuccessful. Try again'))
     }
 
     render() {

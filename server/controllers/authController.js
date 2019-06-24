@@ -34,7 +34,7 @@ module.exports = {
                     } else{
                         req.session.user = {
                             username: user[0].username,
-                            
+                            developer_id: user[0].developer_id
                         }
                         res.status(200).json(req.session.user)
                     }

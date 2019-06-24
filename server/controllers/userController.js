@@ -23,12 +23,16 @@ module.exports = {
     },
 
     addToLikes:async (req, res) => {
-        const {challenge_id, developer_id, imageURL, description} = req.body.likedValues
+        console.log(req.body)
+        const {challenge_id} = req.body
         const db = req.app.get('db')
         if(req.session.user) {
-            const user = await db.add_to_likes([challenge_id, developer_id, imageURL, description])
-            return res.status(200).json(user)
+            const liked = await db.add_to_likes([challenge_id, req.session.user.developer_id])
+            if(liked[0]){
+                return res.sendStatus(200)
+            }
         }else {
+            console.log('not logged in')
             return res.status(404).json('not logged in')
         }
     },
