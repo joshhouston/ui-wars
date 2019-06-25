@@ -30,6 +30,7 @@ class Home extends Component {
                         description: user[i].description
                     })
                 }
+                console.log(this.state.allChallenges)
                 // console.log(user)
                 // this.setState({
                 //     allChallenges: response.data
@@ -87,11 +88,26 @@ class Home extends Component {
                                 <img className='challengeImg' src={challenge.imageurl} alt="uploaded-images"/>
                                 <div className="challenge-options">
                                     <h4>Title: {challenge.description}</h4>
+                                    <p>Description: {challenge.links}</p>
+
+
                                     <div className="option-buttons">
-                                        <button>Save</button>
-                                        <button onClick={() => this.addToLikes(challenge)} >Like</button>
+                                            <button>Accept</button>
+                                            <button onClick={() => this.addToLikes(challenge)} >Like</button>
                                     </div>
                                 </div>
+                                <div className='ui-tools' >
+                                    <h4>Tools</h4>
+                                    <div className="tool-icons">
+                                        <i class="devicon-angularjs-plain"></i>
+                                        <i class="devicon-react-original"></i>
+                                        <i class="devicon-vuejs-plain"></i>
+                                        <i class="devicon-css3-plain"></i>
+                                        <i class="devicon-sass-original"></i>
+                                        <i class="devicon-less-plain-wordmark"></i>
+                                    </div>
+                                </div>
+                                
                             </div>
                         )
                     })}

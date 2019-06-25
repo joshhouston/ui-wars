@@ -10,6 +10,7 @@ $mainPage: #23232E;
 body {
     background: rgb(41,42,53);
     background: linear-gradient(180deg, rgba(41,42,53,1) 0%, rgba(32,33,44,1) 35%, rgba(23,23,27,1) 100%) fixed;
+    font-family: 'Roboto', sans-serif;
 }
 
 .row {
@@ -140,7 +141,7 @@ body {
 // Home Page
 
 .homeChallenges {
-    height: 100vh;
+    height: 40vh;
     width: 100vw;
     display: flex;
     flex-direction: row;
@@ -149,14 +150,18 @@ body {
 }
 
 .challengeDisplay {
-    margin: 1em;
+    margin: 3em;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
 }
 
 .challengeImg {
-    position: relative;
-    display: inline-block;
+    display: flex;
     height: 300px;
-    width: 300px;
+    width: 100%;
+    margin-right: 2em;
+    max-width: 300px;
     &:hover {
         cursor: pointer;
         
@@ -166,10 +171,27 @@ body {
 .challenge-options {
     display: flex;
     // display: none;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
+    color: #FFF;
+}
+
+.ui-tools {
+    width: 40%;
+    margin-left: auto;
+    text-align: right;
+    color: #FFF;
     
 }
+
+
+.devicon-angularjs-plain {
+    max-width: 4em;
+}
+
+
+
+//Likes
 
 .my-likes {
     height: 100vh;
