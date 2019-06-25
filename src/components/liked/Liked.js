@@ -33,12 +33,12 @@ class Liked extends Component {
             axios
                 .delete('/api/likes/' + id)
                 .then(() => {
-                    // axios
-                    // .get('/api/user/likes')
-                    // .then(response => {
-                    //     this.setState({myLikes: response.data})
-                // })
-                console.log('sup')
+                    axios
+                    .get('/api/user/likes')
+                    .then(response => {
+                        this.setState({myLikes: response.data})
+                    })
+                
                 })
         )
        
@@ -57,7 +57,7 @@ class Liked extends Component {
                                 <div className="challenge-options">
                                     <h4>Title: {likes.description} </h4>
                                     <div className="option-buttons">
-                                        <button onClick={() => this.deleteLikes(index)} >Unlike</button>
+                                        <button onClick={() => this.deleteLikes(likes.challenge_id)} >Unlike</button>
                                     </div>
                                 </div>
                             </div>

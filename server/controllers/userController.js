@@ -68,17 +68,13 @@ module.exports = {
     deleteLikes: async (req, res) => {
         const db = req.app.get('db');
         const {id} = req.params;
-        console.log(req.session.user)
-        db.delete_likes(id)
-            .then(() => {
-                res.status(200)
-            })
-            .catch(err => {
-                res.status(500).send({errorMessage: 'not logged in'})
-                console.log(err)
-            })
+        if(req.session.user){
+            const user = await db.delete_likes([req.session.user.developer_id, id])
+            return res.status(200).json(user)    
+        } else {
+            return res.status(404).json('not logged in')
+        }
     }
-
     
     
 }

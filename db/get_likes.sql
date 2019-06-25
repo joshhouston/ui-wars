@@ -3,6 +3,7 @@
 -- WHERE liked.developer_id = $1;
 
 SELECT 
+    challenges.challenge_id,
     challenges.imageurl,
     challenges.description
 FROM challenges
