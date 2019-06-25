@@ -38,7 +38,7 @@ app.put('/api/user', uc.addChallenge);
 //Liked Endpoints
 app.put('/api/liked', uc.addToLikes);
 app.get('/api/user/likes', uc.getLikes)
-
+app.delete('/api/likes/:id', uc.deleteLikes)
 
 
 

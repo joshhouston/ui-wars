@@ -1,0 +1,1 @@
+DELETE FROM liked WHERE liked_id = $1
