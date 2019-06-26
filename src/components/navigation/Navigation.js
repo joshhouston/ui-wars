@@ -37,7 +37,9 @@ function Navigation(props) {
                     </div>
                 </Link>
                 <Link to='/'>
-                    <button onClick={props.logOut} ><img src={logout} className='logout' alt=""/></button>
+                    <div className="nav-row">
+                        <img onClick={props.logOut} src={logout}alt=""/>
+                    </div>
                 </Link>
             </ul>
                 
