@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 
 module.exports = {
     registerDeveloper: (req, res) => {
-        const {username, password, email} = req.body;
+        const {username, password, email, fullname} = req.body;
         const db = req.app.get('db');
 
 
@@ -13,7 +13,7 @@ module.exports = {
             }else {
                 bcrypt.hash(password, 10).then(newPassword => {
                     // Create a new user and put them in db
-                    db.registerDeveloper(username, newPassword, email).then(() => {
+                    db.registerDeveloper(username, newPassword, email, fullname).then(() => {
                         res.status(200).json(username)
                     })
                 })

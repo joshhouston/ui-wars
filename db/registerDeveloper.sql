@@ -1,2 +1,2 @@
-INSERT INTO developers (username, password, email)
-VALUES ($1, $2, $3) RETURNING username;
+INSERT INTO developers (username, password, email, full_name)
+VALUES ($1, $2, $3, $4) RETURNING username;

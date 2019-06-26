@@ -13,7 +13,9 @@ class Dashboard extends Component {
         super();
         this.state ={
             redirect: false,
-            username: ''
+            username: '',
+            fullname: '',
+            email: ''
         }
         this.logOutUser = this.logOutUser.bind(this);
     }
@@ -24,7 +26,12 @@ class Dashboard extends Component {
             .get('/api/dashboard')
             .then(response => {
                 const user = response.data[0]
-                this.setState({username: user.username})
+                console.log(user)
+                this.setState({
+                    username: user.username,
+                    fullname: user.full_name,
+                    email: user.email
+                })
             })
     }
 
@@ -55,9 +62,9 @@ class Dashboard extends Component {
                         </div>
 
                         <div className="profile-info">
-                            <h2>Username: {this.state.username}</h2>
-                            <h3>Member Since: </h3>
-                            <h3>Profiles: <i className="devicon-github-plain"></i></h3>
+                            <h2>Full Name: {this.state.fullname}</h2>
+                            <h3>Email: {this.state.email}</h3>
+                            <h3>Github: <i className="devicon-github-plain"></i></h3>
                         </div>
 
                         <div className="profile-stats">

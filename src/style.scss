@@ -145,8 +145,10 @@ body {
     align-items: center;
     margin-left: 1em;
     img {
-        max-width: 150px;
-        max-height: 150px;
+        max-width: 100%;
+        height: 75px;
+        width: 75px;
+        
     }
 }
 
@@ -258,4 +260,31 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     margin-left: 10vw;
+}
+
+//Edit Component
+.edit-form {
+    @include flexCenter();
+}
+
+.my-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 70vh;
+    width: 50vw;
+    background-color: #2E303D;
+    margin-top: 2em;
+}
+
+.form-inputs {
+    width: 50%;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
 }
