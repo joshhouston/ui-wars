@@ -36,10 +36,11 @@ function Navigation(props) {
                             <img src={add} alt=""/>
                     </div>
                 </Link>
-            </ul>
                 <Link to='/'>
                     <button onClick={props.logOut} ><img src={logout} className='logout' alt=""/></button>
                 </Link>
+            </ul>
+                
         </nav>
     )    
 }

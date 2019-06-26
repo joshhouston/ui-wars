@@ -131,11 +131,54 @@ body {
 
 .dashHeader {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     box-shadow: 1px 1px 10px black ;  
     background-color: #20222F;
     width: 50vw;
     height: 20vh;
     margin-top: 5vh;
+}
+
+.profile-picture {
+    display: flex;
+    align-items: center;
+    margin-left: 1em;
+    img {
+        max-width: 150px;
+        max-height: 150px;
+    }
+}
+
+.profile-info {
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-evenly;
+}
+
+.profile-stats {
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-evenly;
+}
+
+.edit-icon img {
+    margin: 0.5em;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+
+.my-challenges {
+    height: 60vh;
+    width: 50vw;
+    background-color: #2E303D;
+    margin-top: 2em;
 }
 
 // Home Page
@@ -177,6 +220,8 @@ body {
 }
 
 .ui-tools {
+    display: flex;
+    flex-direction: column;
     width: 40%;
     margin-left: auto;
     text-align: right;
@@ -184,11 +229,24 @@ body {
     
 }
 
-
-.devicon-angularjs-plain {
-    max-width: 4em;
+.ui-tools h4 {
+    margin-bottom: 1em;
 }
 
+.ui-frameworks {
+    margin-bottom: 2em;
+    height: 10vh;
+}
+
+.tool-icons i {
+    font-size: 2rem;
+    margin: 0.5em;
+    &:hover {
+        cursor: pointer;
+        transition: 0.2s;
+        font-size: 2.1rem;
+    }
+}
 
 
 //Likes

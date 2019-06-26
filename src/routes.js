@@ -7,6 +7,7 @@ import Dashboard from './components/dashboard/Dashboard';
 import Challenge from './components/create/Challenge';
 import Home from './components/home/Home';
 import Liked from './components/liked/Liked';
+import Edit from './components/edit/Edit';
 
 export default (
     <Switch>
@@ -17,5 +18,6 @@ export default (
         <Route path='/challenge' component={Challenge} />
         <Route path='/home' component={Home} />
         <Route path='/liked' component={Liked} />
+        <Route path='/edit' component={Edit} />
     </Switch>
 )

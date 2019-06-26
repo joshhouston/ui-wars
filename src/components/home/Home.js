@@ -30,40 +30,11 @@ class Home extends Component {
                         description: user[i].description
                     })
                 }
-                console.log(this.state.allChallenges)
-                // console.log(user)
-                // this.setState({
-                //     allChallenges: response.data
-                //     // challenge_id: user.challenge_id,
-                //     // developer_id: user.developer_id,
-                //     // imageURL: user.imageurl,
-                //     // description: user.description
-                // })
-                
-                
             })
     }
 
     addToLikes(challenge){
-        // const likedValues = {
-        //     challenge_id: this.state.challenge_id,
-        //     developer_id: this.state.developer_id,
-        //     imageURL: this.state.imageURL,
-        //     description: this.state.description
-        // }
 
-        // const c_ID = [];
-        // const challenges = this.state.allChallenges
-        // // console.log(challenge)
-        // for(let i=0; i < challenges.length; i++){
-        //     c_ID.push(challenges[i].challenge_id)
-        // }
-        // console.log(c_ID)
-
-        
-        
-
-        
         axios
             .put('/api/liked', {challenge_id: challenge.challenge_id})
             .then(response => {
@@ -88,7 +59,7 @@ class Home extends Component {
                                 <img className='challengeImg' src={challenge.imageurl} alt="uploaded-images"/>
                                 <div className="challenge-options">
                                     <h4>Title: {challenge.description}</h4>
-                                    <p>Description: {challenge.links}</p>
+                                    <p>Description: <br/>{challenge.links}</p>
 
 
                                     <div className="option-buttons">
@@ -99,19 +70,28 @@ class Home extends Component {
                                 <div className='ui-tools' >
                                     <h4>Tools</h4>
                                     <div className="tool-icons">
-                                        <i class="devicon-angularjs-plain"></i>
-                                        <i class="devicon-react-original"></i>
-                                        <i class="devicon-vuejs-plain"></i>
-                                        <i class="devicon-css3-plain"></i>
-                                        <i class="devicon-sass-original"></i>
-                                        <i class="devicon-less-plain-wordmark"></i>
+                                        <div className='ui-frameworks' >
+                                            <h4>Framework/Library</h4>
+                                            <i className="devicon-angularjs-plain"></i>
+                                            <i className="devicon-react-original"></i>
+                                            <i className="devicon-vuejs-plain"></i>
+                                        </div>
+                                        
+                                        <div className='ui-stylers' >
+                                            <h4>Stylers</h4>
+                                            <i className="devicon-css3-plain"></i>
+                                            <i className="devicon-sass-original"></i>
+                                            <i className="devicon-less-plain-wordmark"></i>
                                     </div>
+                                        </div>
+                                        
                                 </div>
                                 
                             </div>
                         )
                     })}
                 </div>
+                
             </div>
         )
     }

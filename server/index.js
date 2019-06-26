@@ -24,7 +24,7 @@ app.use(
 );
 
 
-// ENDPOINTS
+// Auth Endpoints
 app.post('/auth/registerDeveloper', registerDeveloper);
 app.post('/auth/login', loginUsers);
 app.post('/auth/logout', logOut);
@@ -40,7 +40,8 @@ app.put('/api/liked', uc.addToLikes);
 app.get('/api/user/likes', uc.getLikes)
 app.delete('/api/likes/:id', uc.deleteLikes)
 
-
+//Dashboard Endpoints
+app.get('/api/dashboard', uc.get_User)
 
 
 
