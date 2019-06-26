@@ -43,6 +43,9 @@ app.delete('/api/likes/:id', uc.deleteLikes)
 //Dashboard Endpoints
 app.get('/api/dashboard', uc.get_User)
 
+//Edit Endpoints
+app.put('/api/edit', uc.editProfile)
+
 
 
 

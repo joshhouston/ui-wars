@@ -10,10 +10,31 @@ class Edit extends Component {
     constructor() {
         super();
         this.state = {
+            id: '',
             profilePic: '',
             progress: 0,
-            image: ''
+            image: '',
+            username: '',
+            fullname: '',
+            email: '',
+            github: ''
         }
+    }
+
+    componentDidMount() {
+        axios
+            .get('/api/dashboard')
+            .then(response => {
+                const user = response.data[0]
+                console.log(user)
+                this.setState({
+                    id: user.developer_id,
+                    username: user.username,
+                    fullname: user.full_name,
+                    email: user.email,
+                    github: user.socials
+                })
+            })
     }
 
     handleChange = (e) => {
@@ -40,6 +61,28 @@ class Edit extends Component {
             }))
     }
 
+    editProfile(e){
+        if(e) {
+            e.preventDefault()
+        }
+
+        const newValues = {
+            id: this.state.id,
+            fullname: this.state.fullname,
+            email: this.state.email,
+            github: this.state.github,
+            profilePic: this.state.profilePic
+        }
+
+        axios
+            .put('/api/edit', {newValues})
+            .then(response => {
+                const user = response.data[0]
+                // this.setState({id: user.id, fullname: user.full_name, email: user.email, github: user.socials, profilePic: user.profile_picture})
+                alert('Successfully update profile.')
+            })
+    }
+
     render() {
         return(
             <div className='row' >
@@ -47,24 +90,45 @@ class Edit extends Component {
                 <div className='edit-form'>
                     <form className='my-form' action="">
                         Upload Profile Picture:
-                    <FileUploader 
-                            accept="image/*"
-                            name='image'
-                            storageRef={firebase.storage().ref('profile-picture')}
-                            onUploadStart={this.handleUploadStart}
-                            onUploadSuccess={this.handleUploadSuccess}
-                            className='uploader'
-                        />
+                        <FileUploader 
+                                accept="image/*"
+                                name='image'
+                                storageRef={firebase.storage().ref('profile-picture')}
+                                onUploadStart={this.handleUploadStart}
+                                onUploadSuccess={this.handleUploadSuccess}
+                                className='uploader'
+                            />
                         <div className="form-row">
-                            Change Name:
+                            Name:
                             <input
                                 className='form-inputs'
-                                placeholder='Change name...'
+                                placeholder={this.state.fullname}
+                                name='description'
+                                onChange={(e) => this.handleChange(e)}
+                            />
+                        </div>
+
+                        <div className="form-row">
+                            Email:
+                            <input
+                                className='form-inputs'
+                                placeholder={this.state.email}
+                                name='description'
+                                onChange={(e) => this.handleChange(e)}
+                            />
+                        </div>
+
+                        <div className="form-row">
+                            Github:
+                            <input
+                                className='form-inputs'
+                                placeholder={this.state.github}
                                 name='description'
                                 onChange={(e) => this.handleChange(e)}
                             />
                         </div>
                     </form>
+                    <button onClick={(e) => this.editProfile(e)} >Submit Changes</button>
                 </div>
             </div>
         )

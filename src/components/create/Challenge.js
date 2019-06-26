@@ -29,6 +29,7 @@ class Challenge extends Component {
             .get('/api/user/challenge')
             .then(response => {
                 const user = response.data[0]
+                console.log(user)
                 this.setState({challenges:response.data})
                 this.setState({id: user.developer_id, description: user.description, links: user.links, imageURL: user.imageURL})
             })

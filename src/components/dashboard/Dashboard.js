@@ -15,7 +15,8 @@ class Dashboard extends Component {
             redirect: false,
             username: '',
             fullname: '',
-            email: ''
+            email: '',
+            profilePicture: ''
         }
         this.logOutUser = this.logOutUser.bind(this);
     }
@@ -26,11 +27,11 @@ class Dashboard extends Component {
             .get('/api/dashboard')
             .then(response => {
                 const user = response.data[0]
-                console.log(user)
                 this.setState({
                     username: user.username,
                     fullname: user.full_name,
-                    email: user.email
+                    email: user.email,
+                    profilePicture: user.profile_picture
                 })
             })
     }
@@ -58,13 +59,13 @@ class Dashboard extends Component {
                 <div className="dashMain">
                     <div className="dashHeader">
                         <div className="profile-picture">
-                            <img src="https://via.placeholder.com/150" alt=""/>
+                            <img src={this.state.profilePicture} alt=""/>
                         </div>
 
                         <div className="profile-info">
                             <h2>Full Name: {this.state.fullname}</h2>
                             <h3>Email: {this.state.email}</h3>
-                            <h3>Github: <i className="devicon-github-plain"></i></h3>
+                            <h3>Github: <a target='_blank' href="https://github.com/joshhouston"><i className="devicon-github-plain"></i></a> </h3>
                         </div>
 
                         <div className="profile-stats">
