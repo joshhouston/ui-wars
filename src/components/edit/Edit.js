@@ -125,8 +125,8 @@ class Edit extends Component {
                                 onChange={(e) => this.handleChange(e)}
                             />
                         </div>
-                    </form>
                     <button onClick={(e) => this.editProfile(e)} >Submit Changes</button>
+                    </form>
                 </div>
             </div>
         )

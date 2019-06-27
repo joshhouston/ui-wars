@@ -48,8 +48,6 @@ body {
       }
   }
 
-  
-
   .nav-row img {
       display: flex;
       align-items: center;
@@ -87,6 +85,13 @@ body {
       height: 20px;
       width: 60px;
   }
+
+//Loader
+.loader {
+    height: 100vh;
+    width: 100vw;
+    @include flexCenter();
+}
 
 //   Challenge.js upload section
 
@@ -215,6 +220,12 @@ body {
         cursor: pointer;
         
     }
+}
+
+.uploaded-img {
+    max-width: 300px;
+    max-height: 300px;
+    width: 100%;
 }
 
 .challenge-options {

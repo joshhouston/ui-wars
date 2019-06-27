@@ -1,5 +1,5 @@
-INSERT INTO challenges(developer_id, imageURL, description, links)
-VALUES( $1, $2, $3, $4)
+INSERT INTO challenges(developer_id, imageURL, description, links, title)
+VALUES( $1, $2, $3, $4, $5)
 
 
 

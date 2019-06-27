@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Navigation from '../navigation/Navigation';
 import axios from 'axios';
+import Loader from 'react-loader-spinner';
 
 class Home extends Component {
     constructor() {
@@ -10,12 +11,17 @@ class Home extends Component {
             challenge_id: '',
             developer_id: '',
             imageURL: '',
-            description: ''
+            description: '',
+            title: '',
+            links: '',
+
+            isLoading: true
         }
         this.addToLikes = this.addToLikes.bind(this);
     }
 
     componentDidMount() {
+        
         axios
             .get('/api/challenges')
             .then(response => {
@@ -27,10 +33,15 @@ class Home extends Component {
                         challenge_id: user[i].challenge_id,
                         developer_id: user[i].developer_id,
                         imageURL: user[i].imageurl,
-                        description: user[i].description
+                        description: user[i].description,
+                        title: user[i].title,
+                        links: user[i].links,
+
+                        isLoading: false
                     })
                 }
             })
+            
     }
 
     addToLikes(challenge){
@@ -50,17 +61,22 @@ class Home extends Component {
     render(){
         return(
             <div className="row">
-                <Navigation />
-
+                <Navigation logOut={this.props.logOut}/>
+                {this.state.isLoading
+                    ?
+                    <div className="loader">
+                        <Loader type="Oval" color="#FFF" height={80} width={80} />
+                    </div>
+                    :
                 <div className='homeChallenges' >
                     {this.state.allChallenges.map((challenge, index) => {
                         return (
                             <div className='challengeDisplay' key={index} >
-                                <img className='challengeImg' src={challenge.imageurl} alt="uploaded-images"/>
+                               <a href={challenge.imageurl} target="_blank" rel="noopener noreferrer"> <img className='challengeImg' src={challenge.imageurl} alt="uploaded-images"/></a>
                                 <div className="challenge-options">
-                                    <h4>Title: {challenge.description}</h4>
-                                    <p>Description: <br/>{challenge.links}</p>
-
+                                    <h4>Title: {challenge.title}</h4>
+                                    <p>Description: <br/>{challenge.description}</p>
+                                    <p>External Links: {challenge.links}</p>
 
                                     <div className="option-buttons">
                                             <button>Accept</button>
@@ -91,6 +107,8 @@ class Home extends Component {
                         )
                     })}
                 </div>
+                }
+
                 
             </div>
         )

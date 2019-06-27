@@ -18,7 +18,7 @@ class Challenge extends Component {
             id: '',
             description: '',
             links: '',
-            test:'',
+            title:'',
             challenges: []
         }
         this.sendToDatabase = this.sendToDatabase.bind(this)
@@ -29,7 +29,6 @@ class Challenge extends Component {
             .get('/api/user/challenge')
             .then(response => {
                 const user = response.data[0]
-                console.log(user)
                 this.setState({challenges:response.data})
                 this.setState({id: user.developer_id, description: user.description, links: user.links, imageURL: user.imageURL})
             })
@@ -71,14 +70,15 @@ class Challenge extends Component {
             id: this.state.id,
             description: this.state.description,
             links: this.state.links,
-            imageURL: this.state.imageURL
+            imageURL: this.state.imageURL,
+            title: this.state.title
         }
         axios
             .put('/api/user', {newValues})
             .then(response => {
                 const user = response.data[0]
                 // console.log(user)
-                this.setState({id: user.developer_id, description: user.description, links: user.links, imageURL: user.imageURL})
+                this.setState({id: user.developer_id, description: user.description, links: user.links, imageURL: user.imageURL, title: user.title})
             })
             .catch(err => {
                 console.log(err)
@@ -97,7 +97,22 @@ class Challenge extends Component {
 
                 <div className="columnForm">
                     <form className='challengeForm' >
-                        
+                    <div className='uploading'>
+                        {this.state.image && <img className='uploaded-img' alt='uploaded-img' src={this.state.imageURL} />}
+                        <FileUploader 
+                            accept="image/*"
+                            name='image'
+                            storageRef={firebase.storage().ref('images')}
+                            onUploadStart={this.handleUploadStart}
+                            onUploadSuccess={this.handleUploadSuccess}
+                            className='uploader'
+                        />
+                    </div>
+                        <input
+                            placeholder='Enter a title...'
+                            name='title'
+                            onChange={(e) => this.handleChange(e)}
+                        />
                         <input
                             placeholder='Enter a description...'
                             name='description'
@@ -108,20 +123,8 @@ class Challenge extends Component {
                             name='links'
                             onChange={(e) => this.handleChange(e)}
                         />
-                    </form>
                     <button onClick={this.sendToDatabase} >Submit</button>
-                    
-                    <div className='uploading'>
-                        {this.state.image && <img alt='uploaded-img' src={this.state.imageURL} />}
-                        <FileUploader 
-                            accept="image/*"
-                            name='image'
-                            storageRef={firebase.storage().ref('images')}
-                            onUploadStart={this.handleUploadStart}
-                            onUploadSuccess={this.handleUploadSuccess}
-                            className='uploader'
-                        />
-                    </div>
+                    </form>
                 </div>
                 
                 
