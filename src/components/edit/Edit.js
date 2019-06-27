@@ -78,7 +78,6 @@ class Edit extends Component {
             .put('/api/edit', {newValues})
             .then(response => {
                 const user = response.data[0]
-                alert('Successfully update profile.')
             })
     }
 
@@ -102,7 +101,7 @@ class Edit extends Component {
                             <input
                                 className='form-inputs'
                                 placeholder={this.state.fullname}
-                                name='description'
+                                name='fullname'
                                 onChange={(e) => this.handleChange(e)}
                             />
                         </div>
@@ -112,7 +111,7 @@ class Edit extends Component {
                             <input
                                 className='form-inputs'
                                 placeholder={this.state.email}
-                                name='description'
+                                name='email'
                                 onChange={(e) => this.handleChange(e)}
                             />
                         </div>
@@ -122,7 +121,7 @@ class Edit extends Component {
                             <input
                                 className='form-inputs'
                                 placeholder={this.state.github}
-                                name='description'
+                                name='github'
                                 onChange={(e) => this.handleChange(e)}
                             />
                         </div>

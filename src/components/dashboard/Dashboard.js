@@ -16,6 +16,7 @@ class Dashboard extends Component {
             username: '',
             fullname: '',
             email: '',
+            github: '',
             profilePicture: ''
         }
         this.logOutUser = this.logOutUser.bind(this);
@@ -31,7 +32,8 @@ class Dashboard extends Component {
                     username: user.username,
                     fullname: user.full_name,
                     email: user.email,
-                    profilePicture: user.profile_picture
+                    github: user.github,
+                    profilePicture: user.profile_picture,
                 })
             })
     }
@@ -65,7 +67,7 @@ class Dashboard extends Component {
                         <div className="profile-info">
                             <h2>Full Name: {this.state.fullname}</h2>
                             <h3>Email: {this.state.email}</h3>
-                            <h3>Github: <a target='_blank' href="https://github.com/joshhouston"><i className="devicon-github-plain"></i></a> </h3>
+                            <h3>Github: <a target='_blank' href={this.state.github}><i className="devicon-github-plain"></i></a> </h3>
                         </div>
 
                         <div className="profile-stats">
