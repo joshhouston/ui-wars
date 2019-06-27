@@ -2,6 +2,14 @@ import React, {Component} from 'react';
 import Navigation from '../navigation/Navigation';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
+import {makeStyles} from '@material-ui/core/styles';
+import Grow from '@material-ui/core/Grow';
+
+const useStyles = makeStyles(theme => ({
+    root: {
+        height: 180
+    }
+}))
 
 class Home extends Component {
     constructor() {

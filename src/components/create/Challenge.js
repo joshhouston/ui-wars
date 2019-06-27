@@ -4,6 +4,7 @@ import axios from 'axios';
 import FileUploader from 'react-firebase-file-uploader';
 import firebase from 'firebase';
 import firebaseConfig from '../../firebase.js';
+import Loader from 'react-loader-spinner';
 
 firebase.initializeApp(firebaseConfig)
 
@@ -19,7 +20,9 @@ class Challenge extends Component {
             description: '',
             links: '',
             title:'',
-            challenges: []
+            challenges: [],
+
+            isLoading: true
         }
         this.sendToDatabase = this.sendToDatabase.bind(this)
     }
@@ -30,7 +33,7 @@ class Challenge extends Component {
             .then(response => {
                 const user = response.data[0]
                 this.setState({challenges:response.data})
-                this.setState({id: user.developer_id, description: user.description, links: user.links, imageURL: user.imageURL})
+                this.setState({id: user.developer_id, description: user.description, links: user.links, imageURL: user.imageURL, isLoading: false})
             })
             .catch(err => {
                 console.log(err)
@@ -94,38 +97,45 @@ class Challenge extends Component {
             <div className='row'>
 
                 <Navigation />
-
-                <div className="columnForm">
-                    <form className='challengeForm' >
-                    <div className='uploading'>
-                        {this.state.image && <img className='uploaded-img' alt='uploaded-img' src={this.state.imageURL} />}
-                        <FileUploader 
-                            accept="image/*"
-                            name='image'
-                            storageRef={firebase.storage().ref('images')}
-                            onUploadStart={this.handleUploadStart}
-                            onUploadSuccess={this.handleUploadSuccess}
-                            className='uploader'
-                        />
+                {this.state.isLoading
+                    ?
+                    <div className="loader">
+                        <Loader type="Oval" color="#FFF" height={80} width={80} />
                     </div>
-                        <input
-                            placeholder='Enter a title...'
-                            name='title'
-                            onChange={(e) => this.handleChange(e)}
-                        />
-                        <input
-                            placeholder='Enter a description...'
-                            name='description'
-                            onChange={(e) => this.handleChange(e)}
-                        />
-                        <input
-                            placeholder='Enter external links...'
-                            name='links'
-                            onChange={(e) => this.handleChange(e)}
-                        />
-                    <button onClick={this.sendToDatabase} >Submit</button>
-                    </form>
-                </div>
+                    :
+                    <div className="columnForm">
+                        <form className='challengeForm' >
+                        <div className='uploading'>
+                            {this.state.image && <img className='uploaded-img' alt='uploaded-img' src={this.state.imageURL} />}
+                            <FileUploader 
+                                accept="image/*"
+                                name='image'
+                                storageRef={firebase.storage().ref('images')}
+                                onUploadStart={this.handleUploadStart}
+                                onUploadSuccess={this.handleUploadSuccess}
+                                className='uploader'
+                            />
+                        </div>
+                            <input
+                                placeholder='Enter a title...'
+                                name='title'
+                                onChange={(e) => this.handleChange(e)}
+                            />
+                            <input
+                                placeholder='Enter a description...'
+                                name='description'
+                                onChange={(e) => this.handleChange(e)}
+                            />
+                            <input
+                                placeholder='Enter external links...'
+                                name='links'
+                                onChange={(e) => this.handleChange(e)}
+                            />
+                        <button onClick={this.sendToDatabase} >Submit</button>
+                        </form>
+                    </div>
+                }
+
                 
                 
                 {/* <div className="myChallenges">
