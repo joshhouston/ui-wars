@@ -32,7 +32,7 @@ class Edit extends Component {
                     username: user.username,
                     fullname: user.full_name,
                     email: user.email,
-                    github: user.socials
+                    github: user.github
                 })
             })
     }
@@ -78,7 +78,6 @@ class Edit extends Component {
             .put('/api/edit', {newValues})
             .then(response => {
                 const user = response.data[0]
-                // this.setState({id: user.id, fullname: user.full_name, email: user.email, github: user.socials, profilePic: user.profile_picture})
                 alert('Successfully update profile.')
             })
     }

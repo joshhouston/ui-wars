@@ -64,7 +64,7 @@ class Home extends Component {
 
                                     <div className="option-buttons">
                                             <button>Accept</button>
-                                            <button onClick={() => this.addToLikes(challenge)} >Like</button>
+                                            <button className='like' onClick={() => this.addToLikes(challenge)} >Like</button>
                                     </div>
                                 </div>
                                 <div className='ui-tools' >
