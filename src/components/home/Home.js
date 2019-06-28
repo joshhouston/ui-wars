@@ -2,14 +2,9 @@ import React, {Component} from 'react';
 import Navigation from '../navigation/Navigation';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
-import {makeStyles} from '@material-ui/core/styles';
-import Grow from '@material-ui/core/Grow';
+import heart from './heart.png'
+import grayHeart from './gray-heart.png'
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        height: 180
-    }
-}))
 
 class Home extends Component {
     constructor() {
@@ -23,7 +18,8 @@ class Home extends Component {
             title: '',
             links: '',
 
-            isLoading: true
+            isLoading: true,
+            isLiked: false
         }
         this.addToLikes = this.addToLikes.bind(this);
     }
@@ -87,8 +83,12 @@ class Home extends Component {
                                     <p>External Links: {challenge.links}</p>
 
                                     <div className="option-buttons">
-                                            <button>Accept</button>
-                                            <button className='like' onClick={() => this.addToLikes(challenge)} >Like</button>
+                                            <button className='accept-button' >Accept</button>
+                                            <button className='like-button' onClick={() => {
+                                                this.addToLikes(challenge);
+                                                this.setState({isLiked: true});
+                                                console.log(this.state.isLiked)
+                                                }} > <img src={grayHeart} alt="like-button"/>  Like</button>
                                     </div>
                                 </div>
                                 <div className='ui-tools' >

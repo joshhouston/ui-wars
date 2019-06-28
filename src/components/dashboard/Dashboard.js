@@ -25,7 +25,7 @@ class Dashboard extends Component {
     }
 
     componentDidMount() {
-        this.props.getUser();
+        // this.props.getUser();
         axios
             .get('/api/dashboard')
             .then(response => {
@@ -38,6 +38,12 @@ class Dashboard extends Component {
                     profilePicture: user.profile_picture,
                     isLoading: false
                 })
+            })
+            
+        axios
+            .get('/api/challenges')
+            .then(response => {
+                console.log(response.data)
             })
     }
 

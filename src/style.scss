@@ -264,6 +264,48 @@ body {
         font-size: 2.1rem;
     }
 }
+.like-button {
+    height: 25px;
+    width: 60px;
+    background: #FFF;
+    border: 1px solid rgb(177, 165, 165);
+    border-radius: 4px;
+    color: #2E303D;
+    margin-left: 1px;
+    &:hover {
+        cursor: pointer;
+        border: 2px solid gray;
+        transition: ease-in-out 0.2s;
+    }
+}
+
+.liked-button {
+    height: 25px;
+    background: #FC425A;
+    border: 2px solid #FC425A;
+    border-radius: 4px;
+    color: #FFF;
+    margin-left: 3px;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.accept-button {
+    height: 25px;
+    width: 60px;
+    background: #FFF;
+    border: 1px solid gray;
+    border-radius: 4px;
+    color: #2E303D;
+    margin-right: 3px;
+    &:hover {
+        cursor: pointer;
+        border: 2px solid gray;
+        transition: ease-in-out 0.2s;
+    }
+}
+
 
 
 
