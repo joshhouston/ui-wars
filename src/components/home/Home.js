@@ -4,6 +4,37 @@ import axios from 'axios';
 import Loader from 'react-loader-spinner';
 import heart from './heart.png'
 import grayHeart from './gray-heart.png'
+import {Doughnut} from 'react-chartjs-2';
+const data = {
+    datasets: [{
+        data: [10, 20, 14]
+    }],
+    labels: [
+        'React',
+        'Vue',
+        'Angular'
+    ],
+    backgroundColor: [
+        '#61DAFB',
+        '#41B883',
+        '#DD1B16'
+    ],
+    borderColor: [
+        '#61DAFB',
+        '#41B883',
+        '#DD1B16'
+    ],
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+}
+
 
 
 class Home extends Component {
@@ -80,7 +111,7 @@ class Home extends Component {
                                 <div className="challenge-options">
                                     <h4>Title: {challenge.title}</h4>
                                     <p>Description: <br/>{challenge.description}</p>
-                                    <p>External Links: {challenge.links}</p>
+                                    <p>External Links: <br/>{challenge.links}</p>
 
                                     <div className="option-buttons">
                                             <button className='accept-button' >Accept</button>
@@ -91,6 +122,13 @@ class Home extends Component {
                                                 }} > <img src={grayHeart} alt="like-button"/>  Like</button>
                                     </div>
                                 </div>
+                                
+                                <div className="charts">
+                                    <Doughnut
+                                        data={data}
+                                    />
+                                </div>
+                                
                                 <div className='ui-tools' >
                                     <h4>Tools</h4>
                                     <div className="tool-icons">
@@ -106,8 +144,8 @@ class Home extends Component {
                                             <i className="devicon-css3-plain"></i>
                                             <i className="devicon-sass-original"></i>
                                             <i className="devicon-less-plain-wordmark"></i>
-                                    </div>
                                         </div>
+                                    </div>
                                         
                                 </div>
                                 
