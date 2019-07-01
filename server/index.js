@@ -41,6 +41,7 @@ app.get('/api/user/likes', uc.getLikes)
 app.delete('/api/likes/:id', uc.deleteLikes)
 
 //Accepted Endpoint
+app.get('/api/user/accepted', uc.getAccepted)
 app.put('/api/accepted', uc.addToAccepted)
 
 //Dashboard Endpoints

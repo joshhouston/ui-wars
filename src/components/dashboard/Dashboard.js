@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-import Navigation from '../navigation/Navigation'
-import axios from 'axios'
+import Navigation from '../navigation/Navigation';
+import axios from 'axios';
 import {connect} from 'react-redux';
 import {getUser} from '../../redux/reducer';
 import {Redirect} from 'react-router-dom';
 import edit from './edit-icon.png';
 import {Link} from 'react-router-dom';
 import Loader from 'react-loader-spinner';
+import Accepted from '../accepted/Accepted';
 
 
 class Dashboard extends Component {
@@ -43,7 +44,7 @@ class Dashboard extends Component {
         axios
             .get('/api/challenges')
             .then(response => {
-                console.log(response.data)
+                
             })
     }
 
@@ -99,7 +100,7 @@ class Dashboard extends Component {
                         </div>
 
                         <div className="my-challenges">
-
+                            <Accepted />
                         </div>
                     </div>
                 }

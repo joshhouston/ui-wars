@@ -68,6 +68,17 @@ module.exports = {
         }
     },
 
+    getAccepted: async (req, res) => {
+        const db = req.app.get('db')
+        if(req.session.user) {
+            const accepted = await db.get_accepted(req.session.user.developer_id)
+            return res.status(200).json(accepted)
+        }
+        else {
+            return res.status(404).json('not logged in')
+        }
+    },
+
     getLikes: async (req, res) => {
         const db = req.app.get('db')
         if(req.session.user) {
