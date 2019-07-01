@@ -100,6 +100,17 @@ module.exports = {
             return res.status(404).json('not logged in')
         }
     },
+
+    deleteAccepted: async (req, res) => {
+        const db = req.app.get('db');
+        const {id} = req.params;
+        if(req.session.user) {
+            const user = await db.delete_accepted([req.session.user.developer_id, id])
+            return res.status(200).json(user)
+        }else {
+            return res.status(404).json('not logged in')
+        }
+    },
     
     editProfile: async (req, res) => {
         const {id, fullname, email, github, profilePic} = req.body.newValues

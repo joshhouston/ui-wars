@@ -55,6 +55,21 @@ class Accepted extends Component {
                     })
             })
     }
+
+    withdraw(id) {
+        return (
+            axios
+                .delete('/api/accepted/' + id)
+                .then(() => {
+                    alert('successfully removed challenge')
+                    axios
+                        .get('/api/user/accepted')
+                        .then(response => {
+                            this.setState({accepted: response.data})
+                        })
+                })
+        )
+    }
     
 
     render() {
@@ -66,7 +81,7 @@ class Accepted extends Component {
                             <img src={accepted.imageurl} alt="accepted-images" className='accepted_image' />
                             <div className="option-buttons">
                                 <button className='accept-button' onClick={this.openModal}>Complete</button>
-                                <button>Withdraw</button>
+                                <button className='accept-button' onClick={ () => this.withdraw(accepted.challenge_id)} >Withdraw</button>
                                 <Modal
                                     isOpen={this.state.modalIsOpen}
                                     onAfterOpen={this.state.afterOpenModal}

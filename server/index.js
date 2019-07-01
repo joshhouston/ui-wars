@@ -37,18 +37,19 @@ app.put('/api/user', uc.addChallenge);
 
 //Liked Endpoints
 app.put('/api/liked', uc.addToLikes);
-app.get('/api/user/likes', uc.getLikes)
-app.delete('/api/likes/:id', uc.deleteLikes)
+app.get('/api/user/likes', uc.getLikes);
+app.delete('/api/likes/:id', uc.deleteLikes);
 
 //Accepted Endpoint
-app.get('/api/user/accepted', uc.getAccepted)
-app.put('/api/accepted', uc.addToAccepted)
+app.get('/api/user/accepted', uc.getAccepted);
+app.put('/api/accepted', uc.addToAccepted);
+app.delete('/api/accepted/:id', uc.deleteAccepted);
 
 //Dashboard Endpoints
-app.get('/api/dashboard', uc.get_User)
+app.get('/api/dashboard', uc.get_User);
 
 //Edit Endpoints
-app.put('/api/edit', uc.editProfile)
+app.put('/api/edit', uc.editProfile);
 
 
 
