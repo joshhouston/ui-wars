@@ -6,14 +6,13 @@ import heart from './heart.png'
 import grayHeart from './gray-heart.png'
 import {Doughnut} from 'react-chartjs-2';
 const data = {
-    datasets: [{
-        data: [10, 20, 14]
-    }],
     labels: [
         'React',
         'Vue',
         'Angular'
     ],
+    datasets: [{
+        data: [10, 20, 14],
     backgroundColor: [
         '#61DAFB',
         '#41B883',
@@ -33,6 +32,8 @@ const data = {
             }]
         }
     }
+    }]
+    
 }
 
 
@@ -90,7 +91,17 @@ class Home extends Component {
             .catch(err => {
                 console.log(err)
             }) 
+    }
 
+    addToAccepted(challenge){
+        axios
+            .put('/api/accepted', {challenge_id: challenge.challenge_id})
+            .then(response => {
+                alert('Challenge accepted!')
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     render(){
@@ -114,7 +125,9 @@ class Home extends Component {
                                     <p>External Links: <br/>{challenge.links}</p>
 
                                     <div className="option-buttons">
-                                            <button className='accept-button' >Accept</button>
+                                            <button className='accept-button' onClick={() => {
+                                                this.addToAccepted(challenge);
+                                            }} >Accept</button>
                                             <button className='like-button' onClick={() => {
                                                 this.addToLikes(challenge);
                                                 this.setState({isLiked: true});

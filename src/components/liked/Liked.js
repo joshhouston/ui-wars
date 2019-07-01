@@ -19,15 +19,10 @@ class Liked extends Component {
                 axios
                     .get('/api/user/likes')
                     .then(response => {
+                        console.log(response.data)
                         this.setState({myLikes: response.data, isLoading: false})
                     })
             })
-
-    //         .get('/api/user/likes')
-    //         .then(response => {
-    //             const likes = response.data[0]
-    //             console.log(likes)
-    //         })
     }
 
     deleteLikes(id) {

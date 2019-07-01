@@ -54,6 +54,20 @@ module.exports = {
         }
     },
 
+    addToAccepted: async (req, res) => {
+        const {challenge_id} = req.body
+        const db = req.app.get('db')
+        if(req.session.user) {
+            const accepted = await db.add_to_accepted([challenge_id, req.session.user.developer_id])
+            if(accepted[0]){
+                return res.sendStatus(200)
+            }
+            else {
+                return res.status(404).json('not logged in')
+            }
+        }
+    },
+
     getLikes: async (req, res) => {
         const db = req.app.get('db')
         if(req.session.user) {
