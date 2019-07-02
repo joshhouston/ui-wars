@@ -25,7 +25,7 @@ class Accepted extends Component {
             developer_id: '',
             language: 'React',
             links: '',
-            tags: '',
+            description: '',
             accepted: [],
             modalIsOpen: false,
             progress: 0,
@@ -84,9 +84,16 @@ class Accepted extends Component {
                 axios
                     .get('/api/user/accepted')
                     .then(response => {
-                        const user = response.data[0]
-                        this.setState({accepted: response.data, challenge_id: user.challenge_id})
-                        console.log(this.state)
+                        const user = response.data
+                        this.setState({accepted: response.data})
+                        for(let i=0; i < user.length; i++) {
+                            this.setState({
+                                challenge_id: user[i].challenge_id,
+                            })
+                            console.log(user[i])
+                        }
+                        
+                        // this.setState({accepted: response.data, challenge_id: user.challenge_id})
                     })
             })
     }
@@ -106,17 +113,15 @@ class Accepted extends Component {
         )
     }
 
-    sendToComplete(e) {
-        if(e){
-            e.preventDefault();
-        }
-
+    sendToComplete(accepted) {
+        
+        
         const languages = {
             challenge_id: this.state.challenge_id,
             developer_id: this.state.developer_id
         }
 
-        //Send to respective language table depending on language selected
+        // //Send to respective language table depending on language selected
 
         if(this.state.language === 'React') {
             axios
@@ -125,30 +130,44 @@ class Accepted extends Component {
                    alert('submitted!')
                 })
         } else if(this.state.language === 'Angular') {
-            console.log('bangular')
+            axios
+                .put('/api/angular', {languages})
+                .then( () => {
+                   alert('submitted!')
+                })
+        }else if(this.state.language === 'Vue') {
+            axios
+                .put('/api/vue', {languages})
+                .then( () => {
+                   alert('submitted!')
+                })
         }
 
-        // const newValues = {
-        //     id: this.state.id,
-        //     language: this.state.language,
-        //     links: this.state.links,
-        //     tags: this.state.tags
-        // }
 
-        // axios
-        //     .put('/api/completed', {newValues})
-        //     .then(response => {
-        //         const user = response.data[0]
-        //         this.setState({
-        //             id: user.developer_id,
-        //             language: user.language,
-        //             links: user.links,
-        //             tags: user.tags
-        //         })
-        //     })
-        //     .catch(err => {
-        //         console.log(err)
-        //     })
+
+        const newValues = {
+            challenge_id: this.state.challenge_id,
+            developer_id: this.state.developer_id,
+            imageURL: this.state.imageURL,
+            links: this.state.links,
+            description: this.state.description
+        }
+
+        axios
+            .put('/api/completed', {newValues})
+            .then(response => {
+                const user = response.data[0]
+                this.setState({
+                    challenge_id: user.challenge_id,
+                    developer_id: user.developer_id,
+                    imageURL: user.imageURL,
+                    links: user.links,
+                    description: user.description
+                })
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
     
 
@@ -169,13 +188,15 @@ class Accepted extends Component {
                                     style={customStyles}
                                     overlayClassName='Overlay'
                                     >
-                                    <form className='complete_challenge' >
+                                    <form 
+                                    onSubmit={e => {e.preventDefault()}}
+                                    className='complete_challenge' >
                                     <div className='uploading'>
                                         {/* {this.state.image && <img className='uploaded-img' alt='uploaded-img' src={this.state.imageURL} />} */}
                                         Upload a photo/gif of your rendition
                                         <FileUploader 
                                             accept="image/*"
-                                            name='image'
+                                            name='imageURL'
                                             storageRef={firebase.storage().ref('completed')}
                                             onUploadStart={this.handleUploadStart}
                                             onUploadSuccess={this.handleUploadSuccess}
@@ -194,17 +215,17 @@ class Accepted extends Component {
                                            
                                         </div> 
                                         <input
-                                            placeholder='Enter github/codepen link..'
-                                            name='github'
+                                            placeholder='Enter github/codepen link...'
+                                            name='links'
                                             onChange={(e) => this.handleChange(e)}
                                         />
                                         <input
-                                            placeholder='Enter tags ex. ui ux mobile...'
-                                            name='title'
+                                            placeholder='Description...'
+                                            name='description'
                                             onChange={(e) => this.handleChange(e)}
                                         />
                                         <div className="form-button">
-                                            <button className="accept-button" onClick={this.sendToComplete}>Submit</button> 
+                                            <button className="accept-button" onClick={() => this.sendToComplete(accepted)}>Submit</button> 
                                             <button className='accept-button' onClick={this.closeModal} >close</button>  
                                         </div>
                                     </form>            

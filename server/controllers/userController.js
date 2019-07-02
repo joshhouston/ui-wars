@@ -23,10 +23,10 @@ module.exports = {
     },
 
     addToCompleted: async (req, res) => {
-        const {id, title, links, tags} = req.body.newValues
+        const {challenge_id, developer_id, imageURL, links, description} = req.body.newValues
         const db = req.app.get('db')
         if(req.session.user) {
-            const user = await db.add_to_completed([id, language, links, tags])
+            const user = await db.add_to_completed([challenge_id, developer_id, imageURL, links, description])
             return res.status(200).json(user)
         }else {
             return res.status(404).json('not logged in')
@@ -139,12 +139,33 @@ module.exports = {
         const {challenge_id, developer_id} = req.body.languages
         const db = req.app.get('db')
         if(req.session.user) {
-            console.log(req.body)
             const user = await db.add_to_react([challenge_id, developer_id])
             return res.status(200).json(user)
         }else {
             return res.status(404).json('not logged in')
         }
-    }
+    },
+
+    addToAngular: async(req, res) => {
+        const {challenge_id, developer_id} = req.body.languages
+        const db = req.app.get('db')
+        if(req.session.user) {
+            const user = await db.add_to_angular([challenge_id, developer_id])
+            return res.status(200).json(user)
+        }else {
+            return res.status(404).json('not logged in')
+        }
+    },
+    addToVue: async(req, res) => {
+        const {challenge_id, developer_id} = req.body.languages
+        const db = req.app.get('db')
+        if(req.session.user) {
+            const user = await db.add_to_vue([challenge_id, developer_id])
+            return res.status(200).json(user)
+        }else {
+            return res.status(404).json('not logged in')
+        }
+    },
+
     
 }

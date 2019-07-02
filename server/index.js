@@ -44,10 +44,12 @@ app.delete('/api/likes/:id', uc.deleteLikes);
 app.get('/api/user/accepted', uc.getAccepted);
 app.put('/api/accepted', uc.addToAccepted);
 app.delete('/api/accepted/:id', uc.deleteAccepted);
-// app.put('/api/completed', addToCompleted);
+app.put('/api/completed', uc.addToCompleted);
 
 //Send to language table
 app.put('/api/react', uc.addToReact);
+app.put('/api/angular', uc.addToAngular);
+app.put('/api/vue', uc.addToVue);
 
 //Dashboard Endpoints
 app.get('/api/dashboard', uc.get_User);
