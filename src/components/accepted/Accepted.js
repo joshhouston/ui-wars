@@ -21,7 +21,8 @@ class Accepted extends Component {
     constructor() {
         super();
         this.state = {
-            id: '',
+            challenge_id: '',
+            developer_id: '',
             language: 'React',
             links: '',
             tags: '',
@@ -29,7 +30,7 @@ class Accepted extends Component {
             modalIsOpen: false,
             progress: 0,
             image: '',
-            imageURL: ''
+            imageURL: '',
         }
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
@@ -77,11 +78,15 @@ class Accepted extends Component {
     componentDidMount() {
         axios
             .get('/api/user/challenge')
-            .then(() => {
+            .then((response) => {
+                const user2 = response.data[0]
+                this.setState({developer_id: user2.developer_id})
                 axios
                     .get('/api/user/accepted')
                     .then(response => {
-                        this.setState({accepted: response.data})
+                        const user = response.data[0]
+                        this.setState({accepted: response.data, challenge_id: user.challenge_id})
+                        console.log(this.state)
                     })
             })
     }
@@ -107,21 +112,18 @@ class Accepted extends Component {
         }
 
         const languages = {
-            id: this.state.id,
-            language: this.state.language
+            challenge_id: this.state.challenge_id,
+            developer_id: this.state.developer_id
         }
 
+        //Send to respective language table depending on language selected
+
         if(this.state.language === 'React') {
-            // axios
-            //     .put('/api/react', {languages})
-            //     .then(response => {
-            //         const user = response.data[0]
-            //         this.setState({
-            //             id: user.developer_id,
-            //             language: user.language
-            //         })
-            //     })
-            console.log('sup')
+            axios
+                .put('/api/react', {languages})
+                .then( () => {
+                   alert('submitted!')
+                })
         } else if(this.state.language === 'Angular') {
             console.log('bangular')
         }

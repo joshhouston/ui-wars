@@ -136,10 +136,11 @@ module.exports = {
     },
 
     addToReact: async(req, res) => {
-        const {id, language} = req.body.languages
+        const {challenge_id, developer_id} = req.body.languages
         const db = req.app.get('db')
-        if(req.sessions.user) {
-            const user = await db.add_to_react([id, language])
+        if(req.session.user) {
+            console.log(req.body)
+            const user = await db.add_to_react([challenge_id, developer_id])
             return res.status(200).json(user)
         }else {
             return res.status(404).json('not logged in')

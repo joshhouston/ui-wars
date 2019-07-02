@@ -76,8 +76,8 @@ class Edit extends Component {
 
         axios
             .put('/api/edit', {newValues})
-            .then(response => {
-                const user = response.data[0]
+            .then(() => {
+                alert('edit complete!')
             })
     }
 
