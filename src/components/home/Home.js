@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Navigation from '../navigation/Navigation';
+import Chart from '../chartjs/Chart';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
 import heart from './heart.png'
@@ -19,36 +20,7 @@ const customStyles = {
       transform             : 'translate(-50%, -50%)'
     }
   };
-const data = {
-    labels: [
-        'React',
-        'Vue',
-        'Angular'
-    ],
-    datasets: [{
-        data: [10, 20, 14],
-    backgroundColor: [
-        '#61DAFB',
-        '#41B883',
-        '#DD1B16'
-    ],
-    borderColor: [
-        '#61DAFB',
-        '#41B883',
-        '#DD1B16'
-    ],
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-    }]
-    
-}
+
 
 
 
@@ -158,7 +130,7 @@ class Home extends Component {
                                         <h4>View Stats <img src={chart} alt="chart-icon"/></h4>
                                     </div>
                                     <div className="doughnut">
-                                        <Doughnut data={data} />
+                                        <Chart />
                                     </div>
                                 </div>
                                 

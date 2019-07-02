@@ -15,13 +15,31 @@ class Landing extends Component {
 
     render() {
         return (
-            <div>
-                <Link to='/login'>
-                    <button>Login</button>
-                </Link>
-                <Link to='/register' >
-                    <button>Register</button>
-                </Link>
+            <div className='landing' >
+                <div className="landing-header">
+                    <h1>UI Wars</h1>
+                </div>
+                <div className="landing-buttons">
+                    <div class="btn-contain">
+                    <div class="btn-skew-contain">
+                        <Link to='/login'>
+                            <a href="http://mediamilitia.com" class="btn-skew">
+                            <span className='nounder'>Login</span>
+                            </a>
+                        </Link>
+                    </div>
+                    </div>
+
+                    <div class="btn-contain">
+                    <div class="btn-skew-contain">
+                        <Link to='/register'>
+                            <a href="http://mediamilitia.com" class="btn-skew">
+                            <span>Register</span>
+                            </a>
+                        </Link>
+                    </div>
+                    </div>
+                </div>
             </div>
         )
     }

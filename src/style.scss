@@ -86,6 +86,102 @@ body {
       width: 60px;
   }
 
+  //Landing Page
+.landing {
+    @include flexCenter();
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.landing-header {
+    color: #FFF;
+    font-size: 3em;
+    font-family: 'Russo One', sans-serif;
+
+}
+
+//Landing Page Buttons
+.btn-contain {
+    margin: 5% auto;
+    min-height: 100px;
+  }
+  .btn-skew-contain {
+    max-width: 270px;
+    margin: 0 auto;
+  }
+  .btn-skew {
+    font-family:sans-serif;
+    font-weight:bold;
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none!important;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    margin: 10px;
+    padding: 10px 15px 10px 15px;
+    border: 2px solid #f7f7f7;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    -webkit-transition: .3s;
+    transition: .3s;
+    display:block;
+  }
+
+  .nounder {
+      text-decoration: none!important;
+  }
+  .btn-skew:after {
+    position: absolute;
+    -webkit-transition: .3s;
+    transition: .3s;
+    content: '';
+    width: 0;
+    bottom: 0;
+    background: #f7f7f7;
+    height: 120%;
+    left: -10%;
+    -webkit-transform: skewX(15deg);
+    transform: skewX(15deg);
+    z-index: -1;
+  }
+  .btn-skew:hover {
+    cursor: pointer;
+  }
+  .btn-skew:hover:after {
+    width: 100%;
+    left: 0;
+  }
+  .btn-skew:hover {
+    color: black;
+  }
+  .btn-skew:hover:after {
+    left: -10%;
+    width: 120%;
+  }
+
+  //Login page
+  .login {
+      @include flexCenter();
+      height: 100vh;
+      flex-direction: column;
+      justify-content: space-evenly;
+  }
+
+  .login-form {
+      display: flex;
+      width: 30vw;
+      flex-direction: column;
+      height: 30vh;
+      justify-content: space-evenly;
+      background-color: #FFF;
+      border-radius: 5px;
+  }
+
 //Loader
 .loader {
     height: 100vh;

@@ -47,8 +47,11 @@ app.delete('/api/accepted/:id', uc.deleteAccepted);
 app.put('/api/completed', uc.addToCompleted);
 
 //Send to language table
+app.get('/api/react/data', uc.getReactData)
 app.put('/api/react', uc.addToReact);
+
 app.put('/api/angular', uc.addToAngular);
+
 app.put('/api/vue', uc.addToVue);
 
 //Dashboard Endpoints

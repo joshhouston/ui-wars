@@ -40,16 +40,18 @@ class Login extends Component {
             return <Redirect to='/dashboard' />
         }
         return (
-            <div>
+            <div className='login'>
+                <div className="login-header">
                 <h3>Login</h3>
-                <div>
+                </div>
+                <div className='login-form' >
                     Username
                     <input placeholder='username' onChange={this.handleUsername} />
                     Password
                     <input placeholder='password' type='password' onChange={this.handlePassword} />
 
-                </div>
                 <button onClick={this.loginUser} >Login</button>
+                </div>
             </div>
         )
     }
