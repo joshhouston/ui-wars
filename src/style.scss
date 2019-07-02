@@ -1,5 +1,7 @@
 $sidebarMain: #2E303D;
 $mainPage: #23232E;
+
+$breakpoint-l: 768px;
 @mixin flexCenter {
     width: 100%;
     display: flex;
@@ -30,6 +32,11 @@ body {
     width: 100px;
     position: fixed;
     margin-right: 10vw;
+  } 
+    @media(max-width: $breakpoint-l){
+        .nav-main {
+            display: none;
+        }
   }
 
   .nav-row {
@@ -98,7 +105,7 @@ body {
     color: #FFF;
     font-size: 3em;
     font-family: 'Russo One', sans-serif;
-
+    text-shadow: 20px 10px 10px grey;  
 }
 
 //Landing Page Buttons
@@ -172,15 +179,62 @@ body {
       justify-content: space-evenly;
   }
 
+  .login-header {
+    color: #FFF;
+    font-size: 3em;
+    font-family: 'Russo One', sans-serif;
+    text-shadow: 20px 10px 10px grey;  
+  }
+
   .login-form {
       display: flex;
+      align-items: center;
       width: 30vw;
+      height: 40vh;
+      min-width: 300px;
       flex-direction: column;
       height: 30vh;
       justify-content: space-evenly;
       background-color: #FFF;
       border-radius: 5px;
+      box-shadow: 1px 1px 10px grey;
+      font-family: 'Roboto', sans-serif;  
   }
+
+  .login-input {
+      width: 50%;
+      height: 25px;
+      border-radius: 5px;
+      padding-left: 4%;
+      background-color: #FFF;
+
+  }
+
+  .login-button {
+      
+  }
+
+//Registration page
+.registration {
+    @include flexCenter();
+    flex-direction: column;
+    height: 100vh;
+}  
+
+.registration-form {
+    display: flex;
+      align-items: center;
+      width: 30vw;
+      height: 40vh;
+      min-width: 300px;
+      flex-direction: column;
+      height: 45vh;
+      justify-content: space-evenly;
+      background-color: #FFF;
+      border-radius: 5px;
+      box-shadow: 1px 1px 10px grey;
+      font-family: 'Roboto', sans-serif;  
+}
 
 //Loader
 .loader {
@@ -217,6 +271,8 @@ body {
 
 
 //   DASHBOARD
+
+
 .dashboard {
     display: flex;
     flex-direction: row;
@@ -307,14 +363,55 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    flex-shrink: 1;
+}
+@media(max-width: $breakpoint-l){
+    .challengeDisplay{
+        margin: 1em;
+        height: 60vh;
+    }
+
+    .homeChallenges {
+        margin: 1em;
+    }
+}
+
+@media(max-width: 1047px) {
+    .challengeDisplay {
+        margin-left: 1em;
+    }
+
+    .nav-main {
+        width: 80px;
+    }
+}
+
+@media(max-width: 1000px) {
+    .challengeDisplay {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .ui-tools {
+        display: none!important;
+    }
+
+    
+}
+
+.challenge-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1em;
 }
 
 .challengeImg {
     display: flex;
-    height: 300px;
-    max-width: 300px;
-    min-height: 150px;
-    min-width: 150px;
+    height: auto;
+    min-width: 250px;
+    max-width: 250px;
+    height: auto;
     width: 100%;
     margin-right: 2em;
     &:hover {

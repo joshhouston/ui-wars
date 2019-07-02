@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
-
+import Button from '@material-ui/core/button'
 
 
 class Login extends Component {
@@ -46,11 +46,12 @@ class Login extends Component {
                 </div>
                 <div className='login-form' >
                     Username
-                    <input placeholder='username' onChange={this.handleUsername} />
+                    <input className='login-input' placeholder='username' onChange={this.handleUsername} />
                     Password
-                    <input placeholder='password' type='password' onChange={this.handlePassword} />
-
-                <button onClick={this.loginUser} >Login</button>
+                    <input className='login-input' placeholder='password' type='password' onChange={this.handlePassword} />
+                
+                {/* <button className='login-button' onClick={this.loginUser} >Login</button> */}
+                <Button onClick={this.loginUser} variant='outlined'>Login </Button>
                 </div>
             </div>
         )

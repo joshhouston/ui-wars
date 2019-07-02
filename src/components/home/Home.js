@@ -107,7 +107,9 @@ class Home extends Component {
                     {this.state.allChallenges.map((challenge, index) => {
                         return (
                             <div className='challengeDisplay' key={index} >
-                               <a href={challenge.imageurl} target="_blank" rel="noopener noreferrer"> <img className='challengeImg' src={challenge.imageurl} alt="uploaded-images"/></a>
+                                <div className="challenge-image">
+                                    <a href={challenge.imageurl} target="_blank" rel="noopener noreferrer"> <img className='challengeImg' src={challenge.imageurl} alt="uploaded-images"/></a>
+                                </div>
                                 <div className="challenge-options">
                                     <h4>Title: {challenge.title}</h4>
                                     <p>Description: <br/>{challenge.description}</p>

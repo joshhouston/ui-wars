@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
-
+import Button from '@material-ui/core/button'
 
 
 class Registration extends Component {
@@ -51,19 +51,22 @@ class Registration extends Component {
             return <Redirect to='/login' />
         }
         return (
-            <div>
-                <h3>Register a New Account</h3>
-                <div>
-                    Full Name
-                    <input onChange={this.handleFullName} placeholder='Full Name' />
-                    Username
-                    <input onChange={this.handleUsername} placeholder='Username' />
-                    Password
-                    <input onChange={this.handlePassword} placeholder='Password' type='password' />
-                    Email
-                    <input onChange={this.handleEmail} placeholder='Email' type='email' />
+            <div className='registration' >
+                <h3 className='login-header' >Register </h3>
+                
+                    <div className="registration-form">
+                        Full Name
+                        <input className='login-input' onChange={this.handleFullName} placeholder='Full Name' />
+                        Username
+                        <input className='login-input' onChange={this.handleUsername} placeholder='Username' />
+                        Password
+                        <input className='login-input' onChange={this.handlePassword} placeholder='Password' type='password' />
+                        Email
+                        <input className='login-input' onChange={this.handleEmail} placeholder='Email' type='email' />
+
+                        <Button onClick={this.registerDeveloper} variant='outlined'>Register </Button>
+                        
                 </div>
-                <button onClick={this.registerDeveloper} >Register</button>
             </div>
         )
     }

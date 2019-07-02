@@ -58,7 +58,7 @@ class Chart extends Component {
                             'Angular'
                         ],
                         datasets: [{
-                            data: [+this.state.react, 20, 14],
+                            data: [10, 20, 14],
                         backgroundColor: [
                             '#61DAFB',
                             '#41B883',
@@ -69,15 +69,15 @@ class Chart extends Component {
                             '#41B883',
                             '#DD1B16'
                         ],
-                        options: {
-                            scales: {
-                                yAxes: [{
-                                    ticks: {
-                                        beginAtZero: true
-                                    }
-                                }]
-                            }
-                        }
+                        // options: {
+                        //     scales: {
+                        //         yAxes: [{
+                        //             ticks: {
+                        //                 beginAtZero: true
+                        //             }
+                        //         }]
+                        //     }
+                        // }
                         }]
                         
                     }
@@ -95,7 +95,12 @@ class Chart extends Component {
     render() {
         return (
             <div>
-                <Doughnut data={this.state.data} />
+                <Doughnut 
+                options={{
+                    responsive: true,
+                    maintainAspectRatio: true,
+                  }}
+                data={this.state.data} />
             </div>
         )
     }

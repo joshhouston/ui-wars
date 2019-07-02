@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-
+import Button from '@material-ui/core/Button'
 
 
 
@@ -21,13 +21,13 @@ class Landing extends Component {
                 </div>
                 <div className="landing-buttons">
                     <div class="btn-contain">
-                    <div class="btn-skew-contain">
-                        <Link to='/login'>
-                            <a href="http://mediamilitia.com" class="btn-skew">
-                            <span className='nounder'>Login</span>
-                            </a>
-                        </Link>
-                    </div>
+                        <div class="btn-skew-contain">
+                            <Link to='/login'>
+                                <a href="http://mediamilitia.com" class="btn-skew">
+                                <span className='nounder'>Login</span>
+                                </a>
+                            </Link>
+                        </div>
                     </div>
 
                     <div class="btn-contain">
