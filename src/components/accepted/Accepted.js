@@ -2,7 +2,10 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
-// ReactModal.setAppElement('#accepted_display');
+import FileUploader from 'react-firebase-file-uploader';
+import firebase from 'firebase';
+import firebaseConfig from '../../firebase.js';
+// ReactModal.setAppElement('#el');
 const customStyles = {
     content : {
       top                   : '50%',
@@ -18,12 +21,19 @@ class Accepted extends Component {
     constructor() {
         super();
         this.state = {
+            id: '',
+            language: 'React',
+            links: '',
+            tags: '',
             accepted: [],
-            modalIsOpen: false
+            modalIsOpen: false,
+            progress: 0,
+            image: '',
+            imageURL: ''
         }
         this.openModal = this.openModal.bind(this);
-        this.afterOpenModal = this.afterOpenModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.sendToComplete = this.sendToComplete.bind(this);
     }
 
     handleChange = (e) => {
@@ -31,13 +41,34 @@ class Accepted extends Component {
         
     }
 
+    handleSelect = event => {
+        this.setState({ language: event.target.value})
+        console.log(this.state.language)
+    }
+
+    handleUploadStart = () => {
+        this.setState({
+            progress: 0
+        })
+    }
+
+    handleUploadSuccess = filename => {
+        this.setState({
+            image: filename,
+            progress: 100
+
+        })
+
+        firebase.storage().ref('completed').child(filename).getDownloadURL()
+            .then(url => this.setState({
+                imageURL: url
+            }))
+    }
+
     openModal() {
         this.setState({modalIsOpen: true});
     }
 
-    afterOpenModal() {
-        
-    }
 
     closeModal() {
         this.setState({modalIsOpen: false})
@@ -50,7 +81,6 @@ class Accepted extends Component {
                 axios
                     .get('/api/user/accepted')
                     .then(response => {
-                        console.log(response.data)
                         this.setState({accepted: response.data})
                     })
             })
@@ -69,6 +99,54 @@ class Accepted extends Component {
                         })
                 })
         )
+    }
+
+    sendToComplete(e) {
+        if(e){
+            e.preventDefault();
+        }
+
+        const languages = {
+            id: this.state.id,
+            language: this.state.language
+        }
+
+        if(this.state.language === 'React') {
+            // axios
+            //     .put('/api/react', {languages})
+            //     .then(response => {
+            //         const user = response.data[0]
+            //         this.setState({
+            //             id: user.developer_id,
+            //             language: user.language
+            //         })
+            //     })
+            console.log('sup')
+        } else if(this.state.language === 'Angular') {
+            console.log('bangular')
+        }
+
+        // const newValues = {
+        //     id: this.state.id,
+        //     language: this.state.language,
+        //     links: this.state.links,
+        //     tags: this.state.tags
+        // }
+
+        // axios
+        //     .put('/api/completed', {newValues})
+        //     .then(response => {
+        //         const user = response.data[0]
+        //         this.setState({
+        //             id: user.developer_id,
+        //             language: user.language,
+        //             links: user.links,
+        //             tags: user.tags
+        //         })
+        //     })
+        //     .catch(err => {
+        //         console.log(err)
+        //     })
     }
     
 
@@ -90,19 +168,43 @@ class Accepted extends Component {
                                     overlayClassName='Overlay'
                                     >
                                     <form className='complete_challenge' >
+                                    <div className='uploading'>
+                                        {/* {this.state.image && <img className='uploaded-img' alt='uploaded-img' src={this.state.imageURL} />} */}
+                                        Upload a photo/gif of your rendition
+                                        <FileUploader 
+                                            accept="image/*"
+                                            name='image'
+                                            storageRef={firebase.storage().ref('completed')}
+                                            onUploadStart={this.handleUploadStart}
+                                            onUploadSuccess={this.handleUploadSuccess}
+                                            className='uploader'
+                                        />
+                                    </div>
+                                       <div className="form-title">
+                                           What Framework/Library did you use?
+                                           <div className="checkbox">
+                                                <select value={this.state.language} onChange={this.handleSelect} >
+                                                    <option>React</option>
+                                                    <option>Angular</option>
+                                                    <option>Vue</option>
+                                                </select>
+                                           </div>
+                                           
+                                        </div> 
                                         <input
-                                            name='title'
+                                            placeholder='Enter github/codepen link..'
+                                            name='github'
                                             onChange={(e) => this.handleChange(e)}
                                         />
                                         <input
+                                            placeholder='Enter tags ex. ui ux mobile...'
                                             name='title'
                                             onChange={(e) => this.handleChange(e)}
                                         />
-                                        <input
-                                            name='title'
-                                            onChange={(e) => this.handleChange(e)}
-                                        />
-                                      <button onClick={this.closeModal} >close</button>  
+                                        <div className="form-button">
+                                            <button className="accept-button" onClick={this.sendToComplete}>Submit</button> 
+                                            <button className='accept-button' onClick={this.closeModal} >close</button>  
+                                        </div>
                                     </form>            
                                 </Modal>
                                 

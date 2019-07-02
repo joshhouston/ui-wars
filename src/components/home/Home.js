@@ -4,7 +4,21 @@ import axios from 'axios';
 import Loader from 'react-loader-spinner';
 import heart from './heart.png'
 import grayHeart from './gray-heart.png'
+import chart from './chart.png';
 import {Doughnut} from 'react-chartjs-2';
+import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
+// ReactModal.setAppElement('#el');
+const customStyles = {
+    content : {
+      top                   : '50%',
+      left                  : '50%',
+      right                 : 'auto',
+      bottom                : 'auto',
+      marginRight           : '-50%',
+      transform             : 'translate(-50%, -50%)'
+    }
+  };
 const data = {
     labels: [
         'React',
@@ -51,10 +65,13 @@ class Home extends Component {
             links: '',
 
             isLoading: true,
-            isLiked: false
+            isLiked: false,
+            
         }
         this.addToLikes = this.addToLikes.bind(this);
     }
+
+    
 
     componentDidMount() {
         
@@ -132,14 +149,17 @@ class Home extends Component {
                                                 this.addToLikes(challenge);
                                                 this.setState({isLiked: true});
                                                 console.log(this.state.isLiked)
-                                                }} > <img src={grayHeart} alt="like-button"/>  Like</button>
+                                                }} > <img src={grayHeart} alt="like-button"/> Like</button>
                                     </div>
                                 </div>
                                 
                                 <div className="charts">
-                                    <Doughnut
-                                        data={data}
-                                    />
+                                    <div className="charts-header">
+                                        <h4>View Stats <img src={chart} alt="chart-icon"/></h4>
+                                    </div>
+                                    <div className="doughnut">
+                                        <Doughnut data={data} />
+                                    </div>
                                 </div>
                                 
                                 <div className='ui-tools' >

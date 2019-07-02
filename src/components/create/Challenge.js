@@ -21,7 +21,7 @@ class Challenge extends Component {
             links: '',
             title:'',
             challenges: [],
-
+            
             isLoading: true
         }
         this.sendToDatabase = this.sendToDatabase.bind(this)
@@ -45,6 +45,7 @@ class Challenge extends Component {
         
     }
 
+    
     handleUploadStart = () => {
         this.setState({
             progress: 0

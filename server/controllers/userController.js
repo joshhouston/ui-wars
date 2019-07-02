@@ -22,6 +22,17 @@ module.exports = {
         
     },
 
+    addToCompleted: async (req, res) => {
+        const {id, title, links, tags} = req.body.newValues
+        const db = req.app.get('db')
+        if(req.session.user) {
+            const user = await db.add_to_completed([id, language, links, tags])
+            return res.status(200).json(user)
+        }else {
+            return res.status(404).json('not logged in')
+        }  
+    },
+
     getChallenge: (req, res) => {
         const db = req.app.get('db')
         // if(req.session.user) {
@@ -122,6 +133,17 @@ module.exports = {
             return res.status(404).json('not logged in')
         }
         
+    },
+
+    addToReact: async(req, res) => {
+        const {id, language} = req.body.languages
+        const db = req.app.get('db')
+        if(req.sessions.user) {
+            const user = await db.add_to_react([id, language])
+            return res.status(200).json(user)
+        }else {
+            return res.status(404).json('not logged in')
+        }
     }
     
 }

@@ -44,6 +44,10 @@ app.delete('/api/likes/:id', uc.deleteLikes);
 app.get('/api/user/accepted', uc.getAccepted);
 app.put('/api/accepted', uc.addToAccepted);
 app.delete('/api/accepted/:id', uc.deleteAccepted);
+// app.put('/api/completed', addToCompleted);
+
+//Send to language table
+app.put('/api/react', uc.addToReact);
 
 //Dashboard Endpoints
 app.get('/api/dashboard', uc.get_User);
