@@ -80,9 +80,9 @@ class Dashboard extends Component {
                             </div>
 
                             <div className="profile-info">
-                                <h2>Full Name: {this.state.fullname}</h2>
-                                <h3>Email: {this.state.email}</h3>
-                                <h3>Github: <a target='_blank' href={this.state.github}><i className="devicon-github-plain"></i></a> </h3>
+                                <h3>Full Name:<br/> {this.state.fullname}</h3>
+                                <h3>Email:<br/> {this.state.email}</h3>
+                                <h3>Github: <br/> <a target='_blank' href={this.state.github}><i className="devicon-github-plain"></i></a> </h3>
                             </div>
 
                             <div className="profile-stats">

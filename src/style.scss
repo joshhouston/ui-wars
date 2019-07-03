@@ -37,6 +37,8 @@ body {
         .nav-main {
             display: none;
         }
+
+        
   }
 
   .nav-row {
@@ -91,6 +93,10 @@ body {
   .addButton {
       height: 20px;
       width: 60px;
+  }
+
+  .responsive {
+      display: none;
   }
 
   //Landing Page
@@ -259,8 +265,18 @@ body {
   }
 
   .challengeForm {
-      display: flex;
-      flex-direction: column;
+    display: flex;
+    align-items: center;
+    width: 30vw;
+    height: 40vh;
+    min-width: 300px;
+    flex-direction: column;
+    height: 45vh;
+    justify-content: space-evenly;
+    background-color: #FFF;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px grey;
+    font-family: 'Roboto', sans-serif;  
   }
 
   .myChallenges {
@@ -345,6 +361,17 @@ body {
 }
 
 // Home Page
+.challenge-header {
+    @include flexCenter();
+}
+
+.home-header {
+    margin-top: 1em;
+    color: #FFF;
+    font-size: 2em;
+    font-family: 'Russo One', sans-serif;
+    text-shadow: 20px 10px 10px grey;  
+}
 
 .homeChallenges {
     height: 100vh;
@@ -363,8 +390,22 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    flex-shrink: 1;
+    
 }
+
+.challenge-descriptions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 70%;
+}
+
+.option-buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+
 @media(max-width: $breakpoint-l){
     .challengeDisplay{
         margin: 1em;
@@ -392,11 +433,60 @@ body {
         flex-direction: row;
     }
 
+    .dashHeader {
+        width: 65vw;
+        height: 30vh;
+    }
+
+    .my-challenges {
+        width: 65vw;
+    }
+
     .ui-tools {
         display: none!important;
     }
+}
 
+@media(max-width: 648px) {
+    .challengeDisplay {
+        height: 100vh;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .profile-stats {
+        display: none;
+    }
+
+    .profile-info {
+        margin-left: 2em;
+    }
+
+    .profile-picture {
+        display: none;
+    }
+
+    .my-challenges {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .accepted {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .accepted_display {
+        margin-bottom: 2em;
+    }
     
+
+    .challenge-options {
+        height: 30%;
+    }
 }
 
 .challenge-image {

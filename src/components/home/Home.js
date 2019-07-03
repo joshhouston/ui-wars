@@ -104,6 +104,9 @@ class Home extends Component {
                     </div>
                     :
                 <div className='homeChallenges' >
+                    <div className="challenge-header">
+                        <h1 className='home-header' >Challenges</h1>
+                    </div>
                     {this.state.allChallenges.map((challenge, index) => {
                         return (
                             <div className='challengeDisplay' key={index} >
@@ -111,9 +114,11 @@ class Home extends Component {
                                     <a href={challenge.imageurl} target="_blank" rel="noopener noreferrer"> <img className='challengeImg' src={challenge.imageurl} alt="uploaded-images"/></a>
                                 </div>
                                 <div className="challenge-options">
-                                    <h4>Title: {challenge.title}</h4>
-                                    <p>Description: <br/>{challenge.description}</p>
-                                    <p>External Links: <br/>{challenge.links}</p>
+                                    <div className="challenge-descriptions">
+                                        <h4>Title: {challenge.title}</h4>
+                                        <p>Description: <br/>{challenge.description}</p>
+                                        <p>External Links: <br/>{challenge.links}</p>
+                                    </div>
 
                                     <div className="option-buttons">
                                             <button className='accept-button' onClick={() => {

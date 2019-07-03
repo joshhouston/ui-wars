@@ -5,6 +5,8 @@ import FileUploader from 'react-firebase-file-uploader';
 import firebase from 'firebase';
 import firebaseConfig from '../../firebase.js';
 import Loader from 'react-loader-spinner';
+import Button from '@material-ui/core/button'
+
 
 firebase.initializeApp(firebaseConfig)
 
@@ -117,21 +119,25 @@ class Challenge extends Component {
                             />
                         </div>
                             <input
+                                className='login-input'
                                 placeholder='Enter a title...'
                                 name='title'
                                 onChange={(e) => this.handleChange(e)}
                             />
                             <input
+                                className='login-input'
                                 placeholder='Enter a description...'
                                 name='description'
                                 onChange={(e) => this.handleChange(e)}
                             />
                             <input
+                                className='login-input'
                                 placeholder='Enter external links...'
                                 name='links'
                                 onChange={(e) => this.handleChange(e)}
                             />
-                        <button onClick={this.sendToDatabase} >Submit</button>
+                            <Button onClick={this.sendToDatabase} variant='outlined'>Submit </Button>
+                        
                         </form>
                     </div>
                 }

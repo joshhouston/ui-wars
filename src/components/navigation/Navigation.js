@@ -5,6 +5,7 @@ import logout from './logout.png';
 import add from './add.png';
 import home from './home.png';
 import {Link} from 'react-router-dom';
+import ResponsiveMenu from 'react-responsive-navbar';
 
 
 
@@ -42,7 +43,37 @@ function Navigation(props) {
                     </div>
                 </Link>
             </ul>
+
+            <ul className="responsive">
+                <Link to='/Home' >
+                    <div className='nav-row'>
+                            Home
+                    </div>
+                </Link>
+
+                <Link to='/dashboard'>
+                    <div className='nav-row'>
+                            Dashboard
+                    </div>
+                </Link>
+
+                <Link to='/liked'>
+                    <div className="nav-row">
+                            Likes
+                    </div>
+                </Link>
                 
+                <Link to='/challenge'>
+                    <div className="nav-row">
+                            Create
+                    </div>
+                </Link>
+                <Link to='/'>
+                    <div className="nav-row">
+                        <img onClick={props.logOut} src={logout}alt=""/>
+                    </div>
+                </Link>
+            </ul>
         </nav>
     )    
 }
