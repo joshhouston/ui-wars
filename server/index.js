@@ -49,10 +49,11 @@ app.put('/api/completed', uc.addToCompleted);
 //Send to language table
 app.get('/api/react/data', uc.getReactData)
 app.put('/api/react', uc.addToReact);
-
 app.put('/api/angular', uc.addToAngular);
-
 app.put('/api/vue', uc.addToVue);
+
+//Completed Endpoint
+app.get('/api/completed', uc.getCompleted)
 
 //Dashboard Endpoints
 app.get('/api/dashboard', uc.get_User);

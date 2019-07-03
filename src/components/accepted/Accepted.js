@@ -44,7 +44,6 @@ class Accepted extends Component {
 
     handleSelect = event => {
         this.setState({ language: event.target.value})
-        console.log(this.state.language)
     }
 
     handleUploadStart = () => {
@@ -90,7 +89,6 @@ class Accepted extends Component {
                             this.setState({
                                 challenge_id: user[i].challenge_id,
                             })
-                            console.log(user[i])
                         }
                         
                         // this.setState({accepted: response.data, challenge_id: user.challenge_id})

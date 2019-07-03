@@ -100,6 +100,13 @@ module.exports = {
             return res.status(404).json('not logged in')
         }
     },
+    getCompleted: async (req, res) => {
+        const db = req.app.get('db')
+        if(req.session.user) {
+            const user = await db.get_completed(req.session.user.developer_id)
+            return res.status(200).json(user)
+        }  
+    },
 
     deleteLikes: async (req, res) => {
         const db = req.app.get('db');
@@ -134,6 +141,7 @@ module.exports = {
         }
         
     },
+
     getReactData: async (req, res) => {
         const db = req.app.get('db')
         if(req.session.user){
@@ -174,7 +182,7 @@ module.exports = {
         }else {
             return res.status(404).json('not logged in')
         }
-    },
+    }
 
     
 }

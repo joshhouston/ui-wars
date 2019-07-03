@@ -83,18 +83,16 @@ class Challenge extends Component {
             .put('/api/user', {newValues})
             .then(response => {
                 const user = response.data[0]
-                // console.log(user)
                 this.setState({id: user.developer_id, description: user.description, links: user.links, imageURL: user.imageURL, title: user.title})
+                
             })
             .catch(err => {
                 console.log(err)
             })
-            // console.log(this.state)
     }
     
 
     render() {
-        // console.log(this.state)
         return (
             <div className='row'>
 
@@ -105,7 +103,11 @@ class Challenge extends Component {
                         <Loader type="Oval" color="#FFF" height={80} width={80} />
                     </div>
                     :
+                    
                     <div className="columnForm">
+                        <div className="challenge-header">
+                        <h1 className='home-header' >Create A Challenge</h1>
+                    </div>
                         <form className='challengeForm' >
                         <div className='uploading'>
                             {this.state.image && <img className='uploaded-img' alt='uploaded-img' src={this.state.imageURL} />}

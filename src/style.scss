@@ -253,6 +253,7 @@ body {
 
 .columnForm {
     @include flexCenter();
+    flex-direction: column;
 }
   .uploading {
       display: flex;
@@ -497,6 +498,7 @@ body {
 }
 
 .challengeImg {
+    border-radius: 5px;
     display: flex;
     height: auto;
     min-width: 250px;
@@ -615,6 +617,19 @@ body {
 
 //Likes
 
+.like-display {
+    margin: 2em;
+}
+
+.like-options {
+    color: #fff;
+    margin-top: 1em;
+    height: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .my-likes {
     height: 100vh;
     width: 100vw;
@@ -622,6 +637,7 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     margin-left: 10vw;
+    
 }
 
 //Edit Component
@@ -654,7 +670,11 @@ body {
 
 //Accepted
 .accepted {
-    @include flexCenter();
+    margin-top: 1em;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .accepted_image {
@@ -688,4 +708,9 @@ body {
     flex-direction: row;
     width: 20vw;
 
+}
+
+.completed {
+    width: 80vw;
+    height: 70vh;
 }

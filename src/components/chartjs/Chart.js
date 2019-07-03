@@ -82,7 +82,6 @@ class Chart extends Component {
                         
                     }
                 })
-                console.log(this.state.react)
             })
     }
 
