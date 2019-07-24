@@ -618,7 +618,8 @@ body {
 //Likes
 
 .like-display {
-    margin: 2em;
+    height: 300px;
+    width: 300px;
 }
 
 .like-options {
@@ -675,6 +676,7 @@ body {
     width: 100%;
     flex-direction: row;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .accepted_image {

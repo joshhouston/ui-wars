@@ -102,10 +102,14 @@ module.exports = {
     },
     getCompleted: async (req, res) => {
         const db = req.app.get('db')
-        if(req.session.user) {
-            const user = await db.get_completed(req.session.user.developer_id)
-            return res.status(200).json(user)
-        }  
+        const { id } = req.params
+        db.get_completed(+id)
+        .then(completed => res.status(200).send(completed))
+        .catch(err => {
+            res.status(500).send({errorMessage: 'Something went wrong.'})
+            console.log(err)
+        })
+        
     },
 
     deleteLikes: async (req, res) => {
@@ -145,7 +149,7 @@ module.exports = {
     getReactData: async (req, res) => {
         const db = req.app.get('db')
         if(req.session.user){
-            const user = await db.get_react_data(req.session.user.username)
+            const user = await db.get_react_data()
             return res.status(200).json(user)
         } else {
             return res.status(404).json('not logged in')
@@ -153,12 +157,33 @@ module.exports = {
     },
 
     addToReact: async(req, res) => {
-        const {challenge_id, developer_id} = req.body.languages
+        const {challenge_id, developer_id, reactMax} = req.body.languages
         const db = req.app.get('db')
         if(req.session.user) {
-            const user = await db.add_to_react([challenge_id, developer_id])
+            const user = await db.add_to_react([challenge_id, developer_id, reactMax])
             return res.status(200).json(user)
         }else {
+            return res.status(404).json('not logged in')
+        }
+    },
+
+    reactOne: async(req, res) => {
+        const {challenge_id, reactMax} = req.body.update
+        const db = req.app.get('db')
+        if(req.session.user) {
+            const user = await db.update_react([challenge_id, reactMax])
+            return res.status(200).json(user)
+        }else {
+            return res.status(404).json('not logged in')
+        }
+    },
+
+    getAngularData: async (req, res) => {
+        const db = req.app.get('db')
+        if(req.session.user){
+            const user = await db.get_angular_data(req.session.user.username)
+            return res.status(200).json(user)
+        } else {
             return res.status(404).json('not logged in')
         }
     },
@@ -173,6 +198,17 @@ module.exports = {
             return res.status(404).json('not logged in')
         }
     },
+
+    getVueData: async (req, res) => {
+        const db = req.app.get('db')
+        if(req.session.user){
+            const user = await db.get_vue_data(req.session.user.username)
+            return res.status(200).json(user)
+        } else {
+            return res.status(404).json('not logged in')
+        }
+    },
+    
     addToVue: async(req, res) => {
         const {challenge_id, developer_id} = req.body.languages
         const db = req.app.get('db')

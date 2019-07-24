@@ -3,6 +3,6 @@
 -- WHERE challenge_id = $1
 -- returning *;
 
-INSERT INTO react (challenge_id, developer_id)
-VALUES ($1, $2) 
+INSERT INTO react (challenge_id, developer_id, react_increment)
+VALUES ($1, $2, $3)
 RETURNING *;

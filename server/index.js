@@ -1,3 +1,9 @@
+const path = require('path'); // Usually moved to the start of file
+
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+});
+
 require('dotenv').config();
 const express = require('express');
 const massive = require('massive');
@@ -46,14 +52,18 @@ app.put('/api/accepted', uc.addToAccepted);
 app.delete('/api/accepted/:id', uc.deleteAccepted);
 app.put('/api/completed', uc.addToCompleted);
 
-//Send to language table
 app.get('/api/react/data', uc.getReactData)
-app.put('/api/react', uc.addToReact);
+app.get('/api/angular/data', uc.getAngularData)
+app.get('/api/vue/data', uc.getVueData)
+//Send to language table
+app.post('/api/react', uc.addToReact);
 app.put('/api/angular', uc.addToAngular);
 app.put('/api/vue', uc.addToVue);
 
+app.put('/api/react/one', uc.reactOne)
+
 //Completed Endpoint
-app.get('/api/completed', uc.getCompleted)
+app.get('/api/completed/:id', uc.getCompleted)
 
 //Dashboard Endpoints
 app.get('/api/dashboard', uc.get_User);

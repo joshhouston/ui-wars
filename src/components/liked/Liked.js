@@ -45,13 +45,16 @@ class Liked extends Component {
         return (
             <div className="row">
                 <Navigation />
+                
                 {this.state.isLoading
                     ?
                     <div className="loader">
                         <Loader type="Oval" color="#FFF" height={80} width={80} />
                     </div>
                     :
+                    
                     <div className="my-likes">
+                        
                         {this.state.myLikes.map((likes, index) => {
                             return (
                                 <div className="like-display" key={index} >

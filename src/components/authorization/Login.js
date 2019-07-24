@@ -36,7 +36,7 @@ class Login extends Component {
 
     render() {
         if(this.state.redirect) {
-            alert('Log in successful. Prepare for battle.')
+            // alert('Log in successful. Prepare for battle.')
             return <Redirect to='/dashboard' />
         }
         return (

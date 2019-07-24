@@ -30,7 +30,9 @@ class Accepted extends Component {
             modalIsOpen: false,
             progress: 0,
             image: '',
-            imageURL: '',
+            reactMax: 1,
+            imageURL: ''
+        
         }
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
@@ -75,6 +77,12 @@ class Accepted extends Component {
     }
 
     componentDidMount() {
+        // axios
+        //     .get('/api/react/data')
+        //     .then( response => {
+        //         const react = response.data[0]
+        //         this.setState({reactMax: react.max})
+        //     })   
         axios
             .get('/api/user/challenge')
             .then((response) => {
@@ -94,6 +102,8 @@ class Accepted extends Component {
                         // this.setState({accepted: response.data, challenge_id: user.challenge_id})
                     })
             })
+
+
     }
 
     withdraw(id) {
@@ -112,21 +122,31 @@ class Accepted extends Component {
     }
 
     sendToComplete(accepted) {
-        
+        const update = {
+            challenge_id: this.state.challenge_id,
+            reactMax: 1
+        }
         
         const languages = {
             challenge_id: this.state.challenge_id,
-            developer_id: this.state.developer_id
+            developer_id: this.state.developer_id,
+            reactMax: 1
         }
 
         // //Send to respective language table depending on language selected
 
         if(this.state.language === 'React') {
             axios
-                .put('/api/react', {languages})
+                .post('/api/react', {languages})
                 .then( () => {
                    alert('submitted!')
                 })
+            axios
+                .put('/api/react/one', {update})
+                .then(() => {
+                    alert('submitted!')
+                })
+
         } else if(this.state.language === 'Angular') {
             axios
                 .put('/api/angular', {languages})

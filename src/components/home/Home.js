@@ -10,6 +10,7 @@ import {Doughnut} from 'react-chartjs-2';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import Completed from '../completed/Completed';
+import {Navbar, Nav} from 'react-bootstrap'
 // ReactModal.setAppElement('#el');
 const customStyles = {
     content : {
@@ -78,7 +79,6 @@ class Home extends Component {
         axios
             .put('/api/liked', {challenge_id: challenge.challenge_id})
             .then(response => {
-                console.log(response)
                 alert('Challenge added to likes')
             })
             .catch(err => {
@@ -117,6 +117,8 @@ class Home extends Component {
                     </div>
                     :
                 <div className='homeChallenges' >
+                    
+
                     <div className="challenge-header">
                         <h1 className='home-header' >Challenges</h1>
                     </div>
@@ -140,7 +142,6 @@ class Home extends Component {
                                             <button className='like-button' onClick={() => {
                                                 this.addToLikes(challenge);
                                                 this.setState({isLiked: true});
-                                                console.log(this.state.isLiked)
                                                 }} > <img src={grayHeart} alt="like-button"/> Like</button>
                                     </div>
                                 </div>
@@ -157,11 +158,14 @@ class Home extends Component {
                                         overlayClassName='Overlay'
                                     >
                                         <div className="completed-stats">
-                                            <Completed />
+                                            <Completed 
+                                                challenge={challenge.challenge_id}
+                                            />
                                         </div>
                                     </Modal>
                                     <div className="doughnut">
-                                        <Chart />
+                                        
+                                        <Chart  />
                                     </div>
                                 </div>
                                 

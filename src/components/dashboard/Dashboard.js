@@ -41,11 +41,7 @@ class Dashboard extends Component {
                 })
             })
             
-        axios
-            .get('/api/challenges')
-            .then(response => {
-                
-            })
+        
     }
 
     logOutUser() {
