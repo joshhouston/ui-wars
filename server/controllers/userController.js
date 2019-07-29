@@ -103,11 +103,11 @@ module.exports = {
     getCompleted: async (req, res) => {
         const db = req.app.get('db')
         const { id } = req.params
-        db.get_completed(+id)
+        db.get_completed(id)
         .then(completed => res.status(200).send(completed))
         .catch(err => {
             res.status(500).send({errorMessage: 'Something went wrong.'})
-            console.log(err)
+            console.log(errorMessage)
         })
         
     },
@@ -148,12 +148,20 @@ module.exports = {
 
     getReactData: async (req, res) => {
         const db = req.app.get('db')
-        if(req.session.user){
-            const user = await db.get_react_data()
-            return res.status(200).json(user)
-        } else {
-            return res.status(404).json('not logged in')
-        }
+        const { id } = req.params
+        db.get_react_data(id)
+        .then(react => res.status(200).send(react))
+        .catch(err => {
+            res.status(500).send({errorMessage: 'Something went wrong.'})
+            console.log(errorMessage)
+        })
+        
+        // if(req.session.user){
+        //     const user = await db.get_react_data()
+        //     return res.status(200).json(user)
+        // } else {
+        //     return res.status(404).json('not logged in')
+        // }
     },
 
     addToReact: async(req, res) => {
@@ -180,12 +188,21 @@ module.exports = {
 
     getAngularData: async (req, res) => {
         const db = req.app.get('db')
-        if(req.session.user){
-            const user = await db.get_angular_data(req.session.user.username)
-            return res.status(200).json(user)
-        } else {
-            return res.status(404).json('not logged in')
-        }
+        const { id } = req.params
+        db.get_angular_data(id)
+        .then(angular => res.status(200).send(angular))
+        .catch(err => {
+            res.status(500).send({errorMessage: 'Something went wrong.'})
+            console.log(errorMessage)
+        })
+        
+        // const db = req.app.get('db')
+        // if(req.session.user){
+        //     const user = await db.get_angular_data(req.session.user.username)
+        //     return res.status(200).json(user)
+        // } else {
+        //     return res.status(404).json('not logged in')
+        // }
     },
 
     addToAngular: async(req, res) => {
@@ -201,12 +218,21 @@ module.exports = {
 
     getVueData: async (req, res) => {
         const db = req.app.get('db')
-        if(req.session.user){
-            const user = await db.get_vue_data(req.session.user.username)
-            return res.status(200).json(user)
-        } else {
-            return res.status(404).json('not logged in')
-        }
+        const { id } = req.params
+        db.get_vue_data(id)
+        .then(vue => res.status(200).send(vue))
+        .catch(err => {
+            res.status(500).send({errorMessage: 'Something went wrong.'})
+            console.log(errorMessage)
+        })
+        
+        // const db = req.app.get('db')
+        // if(req.session.user){
+        //     const user = await db.get_vue_data(req.session.user.username)
+        //     return res.status(200).json(user)
+        // } else {
+        //     return res.status(404).json('not logged in')
+        // }
     },
     
     addToVue: async(req, res) => {

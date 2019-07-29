@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Navigation from '../navigation/Navigation';
 import Chart from '../chartjs/Chart';
 import axios from 'axios';
@@ -6,22 +6,23 @@ import Loader from 'react-loader-spinner';
 import heart from './heart.png'
 import grayHeart from './gray-heart.png'
 import chart from './chart.png';
-import {Doughnut} from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import Completed from '../completed/Completed';
-import {Navbar, Nav} from 'react-bootstrap'
+import { Navbar, Nav } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 // ReactModal.setAppElement('#el');
 const customStyles = {
-    content : {
-      top                   : '50%',
-      left                  : '50%',
-      right                 : 'auto',
-      bottom                : 'auto',
-      marginRight           : '-50%',
-      transform             : 'translate(-50%, -50%)'
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)'
     }
-  };
+};
 
 
 
@@ -41,23 +42,23 @@ class Home extends Component {
             modalIsOpen: false,
             isLoading: true,
             isLiked: false,
-            
+
         }
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.addToLikes = this.addToLikes.bind(this);
     }
 
-    
+
 
     componentDidMount() {
-        
+
         axios
             .get('/api/challenges')
             .then(response => {
                 const user = response.data
-                for(let i=0; i < user.length; i++) {
-                    
+                for (let i = 0; i < user.length; i++) {
+
                     this.setState({
                         allChallenges: response.data,
                         challenge_id: user[i].challenge_id,
@@ -71,24 +72,24 @@ class Home extends Component {
                     })
                 }
             })
-            
+
     }
 
-    addToLikes(challenge){
+    addToLikes(challenge) {
 
         axios
-            .put('/api/liked', {challenge_id: challenge.challenge_id})
+            .put('/api/liked', { challenge_id: challenge.challenge_id })
             .then(response => {
                 alert('Challenge added to likes')
             })
             .catch(err => {
                 console.log(err)
-            }) 
+            })
     }
 
-    addToAccepted(challenge){
+    addToAccepted(challenge) {
         axios
-            .put('/api/accepted', {challenge_id: challenge.challenge_id})
+            .put('/api/accepted', { challenge_id: challenge.challenge_id })
             .then(response => {
                 alert('Challenge accepted!')
             })
@@ -98,104 +99,108 @@ class Home extends Component {
     }
 
     openModal() {
-        this.setState({modalIsOpen: true});
+        this.setState({ modalIsOpen: true });
     }
 
 
     closeModal() {
-        this.setState({modalIsOpen: false})
+        this.setState({ modalIsOpen: false })
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div className="row">
-                <Navigation logOut={this.props.logOut}/>
+                <Navigation logOut={this.props.logOut} />
                 {this.state.isLoading
                     ?
                     <div className="loader">
                         <Loader type="Oval" color="#FFF" height={80} width={80} />
                     </div>
                     :
-                <div className='homeChallenges' >
-                    
+                    <div className='homeChallenges' >
 
-                    <div className="challenge-header">
-                        <h1 className='home-header' >Challenges</h1>
-                    </div>
-                    {this.state.allChallenges.map((challenge, index) => {
-                        return (
-                            <div className='challengeDisplay' key={index} >
-                                <div className="challenge-image">
-                                    <a href={challenge.imageurl} target="_blank" rel="noopener noreferrer"> <img className='challengeImg' src={challenge.imageurl} alt="uploaded-images"/></a>
-                                </div>
-                                <div className="challenge-options">
-                                    <div className="challenge-descriptions">
-                                        <h4>Title: {challenge.title}</h4>
-                                        <p>Description: <br/>{challenge.description}</p>
-                                        <p>External Links: <br/>{challenge.links}</p>
+
+                        <div className="challenge-header">
+                            <h1 className='home-header' >Challenges</h1>
+                        </div>
+                        {this.state.allChallenges.map((challenge, index) => {
+                            return (
+                                <div className='challengeDisplay' key={index} >
+                                    <div className="challenge-image">
+                                        <a href={challenge.imageurl} target="_blank" rel="noopener noreferrer"> <img className='challengeImg' src={challenge.imageurl} alt="uploaded-images" /></a>
                                     </div>
+                                    <div className="challenge-options">
+                                        <div className="challenge-descriptions">
+                                            <h4>Title: {challenge.title}</h4>
+                                            <p>Description: <br />{challenge.description}</p>
+                                            <p>External Links: <br />{challenge.links}</p>
+                                        </div>
 
-                                    <div className="option-buttons">
+                                        <div className="option-buttons">
                                             <button className='accept-button' onClick={() => {
                                                 this.addToAccepted(challenge);
                                             }} >Accept</button>
                                             <button className='like-button' onClick={() => {
                                                 this.addToLikes(challenge);
-                                                this.setState({isLiked: true});
-                                                }} > <img src={grayHeart} alt="like-button"/> Like</button>
+                                                this.setState({ isLiked: true });
+                                            }} > <img src={grayHeart} alt="like-button" /> Like</button>
+                                        </div>
                                     </div>
-                                </div>
-                                
-                                <div className="charts">
-                                    <div onClick={this.openModal} className="charts-header">
-                                        <h4>View Stats <img src={chart} alt="chart-icon"/></h4>
-                                    </div>
-                                    <Modal
-                                        isOpen={this.state.modalIsOpen}
-                                        onAfterOpen={this.state.afterOpenModal}
-                                        onRequestClose={this.closeModal}
-                                        style={customStyles}
-                                        overlayClassName='Overlay'
-                                    >
+
+                                    <div className="charts">
+                                        <div className="charts-header">
+                                        </div>
+
                                         <div className="completed-stats">
-                                            <Completed 
+                                            <Link className='link' to={{
+                                                pathname: '/completed',
+                                                state: {
+                                                    challenge_id: challenge.challenge_id,
+                                                    username: challenge.username,
+                                                    links: challenge.links
+                                                }
+                                            }}>
+                                                <h4>View Stats <img src={chart} alt="chart-icon" /></h4>
+
+                                            </Link>
+                                            {/* <Completed
                                                 challenge={challenge.challenge_id}
-                                            />
+                                            /> */}
                                         </div>
-                                    </Modal>
-                                    <div className="doughnut">
-                                        
-                                        <Chart  />
-                                    </div>
-                                </div>
-                                
-                                <div className='ui-tools' >
-                                    <h4>Tools</h4>
-                                    <div className="tool-icons">
-                                        <div className='ui-frameworks' >
-                                            <h4>Framework/Library</h4>
-                                            <i className="devicon-angularjs-plain"></i>
-                                            <i className="devicon-react-original"></i>
-                                            <i className="devicon-vuejs-plain"></i>
-                                        </div>
-                                        
-                                        <div className='ui-stylers' >
-                                            <h4>Stylers</h4>
-                                            <i className="devicon-css3-plain"></i>
-                                            <i className="devicon-sass-original"></i>
-                                            <i className="devicon-less-plain-wordmark"></i>
+
+                                        <div className="doughnut">
+
+                                            <Chart id={challenge.challenge_id} />
                                         </div>
                                     </div>
-                                        
+
+                                    <div className='ui-tools' >
+                                        <h4>Tools</h4>
+                                        <div className="tool-icons">
+                                            <div className='ui-frameworks' >
+                                                <h4>Framework/Library</h4>
+                                                <i className="devicon-angularjs-plain"></i>
+                                                <i className="devicon-react-original"></i>
+                                                <i className="devicon-vuejs-plain"></i>
+                                            </div>
+
+                                            <div className='ui-stylers' >
+                                                <h4>Stylers</h4>
+                                                <i className="devicon-css3-plain"></i>
+                                                <i className="devicon-sass-original"></i>
+                                                <i className="devicon-less-plain-wordmark"></i>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
                                 </div>
-                                
-                            </div>
-                        )
-                    })}
-                </div>
+                            )
+                        })}
+                    </div>
                 }
 
-                
+
             </div>
         )
     }

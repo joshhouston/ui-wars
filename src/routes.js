@@ -8,6 +8,7 @@ import Challenge from './components/create/Challenge';
 import Home from './components/home/Home';
 import Liked from './components/liked/Liked';
 import Edit from './components/edit/Edit';
+import Completed from './components/completed/Completed';
 
 export default (
     <Switch>
@@ -19,5 +20,6 @@ export default (
         <Route path='/home' component={Home} />
         <Route path='/liked' component={Liked} />
         <Route path='/edit' component={Edit} />
+        <Route path ='/completed' component={Completed} />
     </Switch>
 )

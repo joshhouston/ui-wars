@@ -77,6 +77,7 @@ class Accepted extends Component {
     }
 
     componentDidMount() {
+        console.log(this.state.language)
         // axios
         //     .get('/api/react/data')
         //     .then( response => {
@@ -144,20 +145,17 @@ class Accepted extends Component {
             axios
                 .put('/api/react/one', {update})
                 .then(() => {
-                    alert('submitted!')
                 })
 
         } else if(this.state.language === 'Angular') {
             axios
                 .put('/api/angular', {languages})
                 .then( () => {
-                   alert('submitted!')
                 })
         }else if(this.state.language === 'Vue') {
             axios
                 .put('/api/vue', {languages})
                 .then( () => {
-                   alert('submitted!')
                 })
         }
 

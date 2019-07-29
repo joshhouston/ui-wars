@@ -697,6 +697,30 @@ body {
     background-color: rgba(0,0,0,.3);
 } 
 
+.completed-users {
+    height: 80vh;
+    width: 80vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 15vw;
+    img{
+        height: 50px;
+        width: 50px;
+    }
+}
+
+.completed-user {
+    width: 400px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    color: #FFF;
+    
+}
+
 .complete_challenge {
     display: flex;
     flex-direction: column;
@@ -715,4 +739,9 @@ body {
 .completed {
     width: 80vw;
     height: 70vh;
+}
+
+.link {
+    color: #FFF;
+    text-decoration: none;
 }

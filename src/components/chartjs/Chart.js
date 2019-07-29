@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
-import {Doughnut} from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
 
 
 class Chart extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             react: 0,
             angular: 0,
@@ -13,33 +13,35 @@ class Chart extends Component {
             data: {}
         }
     }
-    
-    
-    componentDidMount() {
-        this.getChartData()
 
+
+    componentDidMount() {
+        this.getChartData(this.props.id)
     }
 
-    getChartData(){
+    getChartData(id) {
         const chartData = []
-        Promise.all([axios
-            .get('/api/angular/data')
-            .then(response => {
-                const angular = response.data[0]
-                chartData.push(angular.max)
-            }),
-            axios    
-            .get('/api/react/data')
-            .then(response => {
+        Promise.all([
+            axios
+                .get(`/api/react/data/${id}`)
+                .then(response => {
                     const react = response.data[0]
-                chartData.push(react.max)
-            }),
-            axios    
-            .get('/api/vue/data')
-            .then(response => {
-                const vue = response.data[0] 
-                chartData.push(vue.max)
-            })
+                    chartData.push(react.max)
+                }),
+            
+                axios
+                .get(`/api/angular/data/${id}`)
+                .then(response => {
+                    const angular = response.data[0]
+                    chartData.push(angular.max)
+                }),
+
+            axios
+                .get(`/api/vue/data/${id}`)
+                .then(response => {
+                    const vue = response.data[0]
+                    chartData.push(vue.max)
+                })
         ]).then(() => {
             this.setState({
                 data: {
@@ -50,55 +52,54 @@ class Chart extends Component {
                     ],
                     datasets: [{
                         data: chartData,
-                    backgroundColor: [
-                        '#61DAFB',
-                        '#41B883',
-                        '#DD1B16'
-                    ],
-                    borderColor: [
-                        '#61DAFB',
-                        '#41B883',
-                        '#DD1B16'
-                    ],
-                    options: {
-                        scales: {
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero: true
-                                }
-                            }]
+                        backgroundColor: [
+                            '#61DAFB',
+                            '#41B883',
+                            '#DD1B16'
+                        ],
+                        borderColor: [
+                            '#61DAFB',
+                            '#41B883',
+                            '#DD1B16'
+                        ],
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
                         }
-                    }
                     }]
-                    
+
                 }
             })
         })
-        
-
-        
-
-                
 
 
-        
+
+
+
+
+
     }
 
-    
+
 
     render() {
         return (
             <div>
                 {this.state && this.state.data &&
-                <Doughnut 
-                options={{
-                    responsive: true,
-                    maintainAspectRatio: true,
-                  }}
-                data={this.state.data} />
-                
+                    <Doughnut
+                        options={{
+                            responsive: true,
+                            maintainAspectRatio: true,
+                        }}
+                        data={this.state.data} />
+
                 }
-                
+
             </div>
         )
     }

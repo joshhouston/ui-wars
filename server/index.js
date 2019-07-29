@@ -1,8 +1,8 @@
-const path = require('path'); // Usually moved to the start of file
+// const path = require('path'); // Usually moved to the start of file
 
-app.get('*', (req, res)=>{
-    res.sendFile(path.join(__dirname, '../build/index.html'));
-});
+// app.get('*', (req, res)=>{
+//     res.sendFile(path.join(__dirname, '../build/index.html'));
+// });
 
 require('dotenv').config();
 const express = require('express');
@@ -52,11 +52,12 @@ app.put('/api/accepted', uc.addToAccepted);
 app.delete('/api/accepted/:id', uc.deleteAccepted);
 app.put('/api/completed', uc.addToCompleted);
 
-app.get('/api/react/data', uc.getReactData)
-app.get('/api/angular/data', uc.getAngularData)
-app.get('/api/vue/data', uc.getVueData)
+app.get('/api/react/data/:id', uc.getReactData)
+app.get('/api/angular/data/:id', uc.getAngularData)
+app.get('/api/vue/data/:id', uc.getVueData)
+
 //Send to language table
-app.post('/api/react', uc.addToReact);
+app.post('/api/react/', uc.addToReact);
 app.put('/api/angular', uc.addToAngular);
 app.put('/api/vue', uc.addToVue);
 
