@@ -5,7 +5,7 @@ import FileUploader from 'react-firebase-file-uploader';
 import firebase from 'firebase';
 import firebaseConfig from '../../firebase.js';
 import Loader from 'react-loader-spinner';
-import Button from '@material-ui/core/button'
+import Button from '@material-ui/core/Button'
 
 
 firebase.initializeApp(firebaseConfig)

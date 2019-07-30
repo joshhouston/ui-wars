@@ -8,8 +8,6 @@ import grayHeart from './gray-heart.png'
 import chart from './chart.png';
 import { Doughnut } from 'react-chartjs-2';
 import ReactDOM from 'react-dom';
-import Modal from 'react-modal';
-import Completed from '../completed/Completed';
 import { Navbar, Nav } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 // ReactModal.setAppElement('#el');

@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import FileUploader from 'react-firebase-file-uploader';
 import firebase from 'firebase';
-import firebaseConfig from '../../firebase.js';
 // ReactModal.setAppElement('#el');
 const customStyles = {
     content : {
