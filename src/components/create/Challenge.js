@@ -144,18 +144,6 @@ class Challenge extends Component {
                     </div>
                 }
 
-                
-                
-                {/* <div className="myChallenges">
-                    {this.state.challenges.map((challenge, index) => {
-                        return (
-                            <div key={index} >
-                                <h3>{challenge.description}</h3>
-                                <h3>{challenge.links}</h3>
-                            </div>
-                        )
-                    })} 
-                </div> */}
             </div>
         )
     }

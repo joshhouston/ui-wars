@@ -76,13 +76,6 @@ class Chart extends Component {
                 }
             })
         })
-
-
-
-
-
-
-
     }
 
 

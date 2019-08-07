@@ -36,7 +36,7 @@ class Login extends Component {
 
     render() {
         if(this.state.redirect) {
-            // alert('Log in successful. Prepare for battle.')
+            alert('Log in successful. Prepare for battle.')
             return <Redirect to='/dashboard' />
         }
         return (
@@ -50,7 +50,6 @@ class Login extends Component {
                     Password
                     <input className='login-input' placeholder='password' type='password' onChange={this.handlePassword} />
                 
-                {/* <button className='login-button' onClick={this.loginUser} >Login</button> */}
                 <Button onClick={this.loginUser} variant='outlined'>Login </Button>
                 </div>
             </div>

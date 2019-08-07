@@ -67,7 +67,6 @@ class Liked extends Component {
                                         color="secondary">
                                             Unlike
                                         </Button>
-                                            {/* <button onClick={() => this.deleteLikes(likes.challenge_id)} >Unlike</button> */}
                                         </div>
                                     </div>
                                 </div>

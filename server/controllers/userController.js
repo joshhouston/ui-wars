@@ -156,12 +156,6 @@ module.exports = {
             console.log(errorMessage)
         })
         
-        // if(req.session.user){
-        //     const user = await db.get_react_data()
-        //     return res.status(200).json(user)
-        // } else {
-        //     return res.status(404).json('not logged in')
-        // }
     },
 
     addToReact: async(req, res) => {
@@ -196,13 +190,6 @@ module.exports = {
             console.log(errorMessage)
         })
         
-        // const db = req.app.get('db')
-        // if(req.session.user){
-        //     const user = await db.get_angular_data(req.session.user.username)
-        //     return res.status(200).json(user)
-        // } else {
-        //     return res.status(404).json('not logged in')
-        // }
     },
 
     addToAngular: async(req, res) => {
@@ -225,14 +212,6 @@ module.exports = {
             res.status(500).send({errorMessage: 'Something went wrong.'})
             console.log(errorMessage)
         })
-        
-        // const db = req.app.get('db')
-        // if(req.session.user){
-        //     const user = await db.get_vue_data(req.session.user.username)
-        //     return res.status(200).json(user)
-        // } else {
-        //     return res.status(404).json('not logged in')
-        // }
     },
     
     addToVue: async(req, res) => {

@@ -161,9 +161,6 @@ class Home extends Component {
                                                 <h4>View Stats <img src={chart} alt="chart-icon" /></h4>
 
                                             </Link>
-                                            {/* <Completed
-                                                challenge={challenge.challenge_id}
-                                            /> */}
                                         </div>
 
                                         <div className="doughnut">

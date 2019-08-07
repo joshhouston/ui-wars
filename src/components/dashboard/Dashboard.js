@@ -26,7 +26,6 @@ class Dashboard extends Component {
     }
 
     componentDidMount() {
-        // this.props.getUser();
         axios
             .get('/api/dashboard')
             .then(response => {
@@ -52,13 +51,7 @@ class Dashboard extends Component {
     }
 
     render() {
-        // if(!this.props.user) {
-        //     this.setState({redirect: true})
-        // }
-        // if(this.state.redirect) {
-        //     alert('please login')
-        //     return <Redirect to='/' />
-        // }
+     
         return (
 
             <div className='dashboard'>
@@ -100,8 +93,6 @@ class Dashboard extends Component {
                         </div>
                     </div>
                 }
-
-                {/* <button onClick={this.logOutUser} >Logout</button> */}
                 
             </div>
         )

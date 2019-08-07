@@ -77,12 +77,6 @@ class Accepted extends Component {
 
     componentDidMount() {
         console.log(this.state.language)
-        // axios
-        //     .get('/api/react/data')
-        //     .then( response => {
-        //         const react = response.data[0]
-        //         this.setState({reactMax: react.max})
-        //     })   
         axios
             .get('/api/user/challenge')
             .then((response) => {
@@ -99,7 +93,6 @@ class Accepted extends Component {
                             })
                         }
                         
-                        // this.setState({accepted: response.data, challenge_id: user.challenge_id})
                     })
             })
 
@@ -207,7 +200,6 @@ class Accepted extends Component {
                                     onSubmit={e => {e.preventDefault()}}
                                     className='complete_challenge' >
                                     <div className='uploading'>
-                                        {/* {this.state.image && <img className='uploaded-img' alt='uploaded-img' src={this.state.imageURL} />} */}
                                         Upload a photo/gif of your rendition
                                         <FileUploader 
                                             accept="image/*"
