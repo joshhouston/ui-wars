@@ -19,30 +19,40 @@ class Chart extends Component {
         this.getChartData(this.props.id)
     }
 
-    getChartData(id) {
+     async getChartData(id) {
         const chartData = []
-        Promise.all([
-            axios
-                .get(`/api/react/data/${id}`)
-                .then(response => {
-                    const react = response.data[0]
-                    chartData.push(react.max)
-                }),
-            
-                axios
-                .get(`/api/angular/data/${id}`)
-                .then(response => {
-                    const angular = response.data[0]
-                    chartData.push(angular.max)
-                }),
+        //  Promise.all([
+         axios.all([
+            axios.get(`/api/react/data/${id}`),
+            axios.get(`/api/angular/data/${id}`),
+            axios.get(`/api/vue/data/${id}`)
 
-            axios
-                .get(`/api/vue/data/${id}`)
-                .then(response => {
-                    const vue = response.data[0]
-                    chartData.push(vue.max)
-                })
-        ]).then(() => {
+            //  await axios
+            //     .get(`/api/react/data/${id}`)
+            //     .then(response => {
+            //         console.log(response.data[0])
+            //         const react = response.data[0]
+            //         chartData.push(react.max)
+                    
+            //     }),
+            
+            //  await axios
+            //     .get(`/api/angular/data/${id}`)
+            //     .then(response => {
+            //         const angular = response.data[0]
+            //         chartData.push(angular.max)
+            //     }),
+
+            // axios
+            //     .get(`/api/vue/data/${id}`)
+            //     .then(response => {
+            //         const vue = response.data[0]
+            //         chartData.push(vue.max)
+            //     })
+        ]).then(axios.spread((first, second, third) => {
+            chartData.push(first.data[0].max, second.data[0].max, third.data[0].max)
+        }))
+        .then(() => {
             this.setState({
                 data: {
                     labels: [
