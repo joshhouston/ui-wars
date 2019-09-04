@@ -76,7 +76,6 @@ class Accepted extends Component {
     }
 
     componentDidMount() {
-        console.log(this.state.language)
         axios
             .get('/api/user/challenge')
             .then((response) => {

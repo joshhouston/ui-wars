@@ -35,13 +35,6 @@ module.exports = {
 
     getChallenge: (req, res) => {
         const db = req.app.get('db')
-        // if(req.session.user) {
-        //     const user = db.findChallenge(req.session.user.challenge_id)
-        //     console.log(user)
-        //     return res.status(200).json(user)
-        // }else {
-        //     return res.status(404).json('not logged in')
-        // }
         db.findChallenge()
             .then(challenge => res.status(200).send(challenge))
             .catch(err => {

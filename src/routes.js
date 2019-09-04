@@ -12,7 +12,8 @@ import Completed from './components/completed/Completed';
 
 export default (
     <Switch>
-        <Route exact path='/' component={Landing} />
+        <Route exact path='/' component={Home} />
+        <Route path='/landing' component={Landing} />
         <Route path='/register' component={Registration} />
         <Route path='/login' component={Login} />
         <Route path='/dashboard' component={Dashboard} />

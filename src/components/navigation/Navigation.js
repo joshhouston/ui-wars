@@ -36,7 +36,7 @@ function Navigation(props) {
                             <img src={add} alt=""/>
                     </div>
                 </Link>
-                <Link to='/'>
+                <Link to='/landing'>
                     <div className="nav-row">
                         <img onClick={props.logOut} src={logout}alt=""/>
                     </div>
@@ -67,7 +67,7 @@ function Navigation(props) {
                             Create
                     </div>
                 </Link>
-                <Link to='/'>
+                <Link to='/landing'>
                     <div className="nav-row">
                         <img onClick={props.logOut} src={logout}alt=""/>
                     </div>
