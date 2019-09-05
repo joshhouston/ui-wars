@@ -7,7 +7,8 @@
 SELECT DISTINCT developers.username,
 developers.profile_picture,
 completed.imageurl,
-completed.links 
+completed.links,
+completed.tool 
 FROM completed
 INNER JOIN developers
 ON developers.developer_id = completed.developer_id

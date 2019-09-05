@@ -23,10 +23,10 @@ module.exports = {
     },
 
     addToCompleted: async (req, res) => {
-        const {challenge_id, developer_id, imageURL, links, description} = req.body.newValues
+        const {challenge_id, developer_id, imageURL, links, description, tool} = req.body.newValues
         const db = req.app.get('db')
         if(req.session.user) {
-            const user = await db.add_to_completed([challenge_id, developer_id, imageURL, links, description])
+            const user = await db.add_to_completed([challenge_id, developer_id, imageURL, links, description, tool])
             return res.status(200).json(user)
         }else {
             return res.status(404).json('not logged in')
@@ -152,7 +152,7 @@ module.exports = {
     },
 
     addToReact: async(req, res) => {
-        const {challenge_id, developer_id, reactMax} = req.body.languages
+        const {challenge_id, developer_id, reactMax} = req.body.react
         const db = req.app.get('db')
         if(req.session.user) {
             const user = await db.add_to_react([challenge_id, developer_id, reactMax])
@@ -208,7 +208,7 @@ module.exports = {
     },
 
     addToAngular: async(req, res) => {
-        const {challenge_id, developer_id, reactMax} = req.body.languages
+        const {challenge_id, developer_id, reactMax} = req.body.angular
         const db = req.app.get('db')
         if(req.session.user) {
             const user = await db.add_to_angular([challenge_id, developer_id, reactMax])
@@ -230,7 +230,7 @@ module.exports = {
     },
     
     addToVue: async(req, res) => {
-        const {challenge_id, developer_id, reactMax} = req.body.languages
+        const {challenge_id, developer_id, reactMax} = req.body.vue
         const db = req.app.get('db')
         if(req.session.user) {
             const user = await db.add_to_vue([challenge_id, developer_id, reactMax])

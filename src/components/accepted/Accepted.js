@@ -119,7 +119,19 @@ class Accepted extends Component {
             reactMax: 0
         }
         
-        const languages = {
+        const react = {
+            challenge_id: this.state.challenge_id,
+            developer_id: this.state.developer_id,
+            reactMax: 0
+        }
+
+        const angular = {
+            challenge_id: this.state.challenge_id,
+            developer_id: this.state.developer_id,
+            reactMax: 0
+        }
+
+        const vue = {
             challenge_id: this.state.challenge_id,
             developer_id: this.state.developer_id,
             reactMax: 0
@@ -129,7 +141,7 @@ class Accepted extends Component {
 
         if(this.state.language === 'React') {
             axios
-                .post('/api/react', {languages})
+                .post('/api/react', {react})
                 .then( () => {
                    alert('Submitted!')
                 })
@@ -138,10 +150,35 @@ class Accepted extends Component {
                 .then(() => {
                     this.closeModal()
                 })
+            
+            const newValues = {
+                    challenge_id: this.state.challenge_id,
+                    developer_id: this.state.developer_id,
+                    imageURL: this.state.imageURL,
+                    links: this.state.links,
+                    description: this.state.description,
+                    tool: 1
+                }    
+
+            axios
+                .put('/api/completed', {newValues})
+                .then(response => {
+                    const user = response.data[0]
+                    this.setState({
+                        challenge_id: user.challenge_id,
+                        developer_id: user.developer_id,
+                        imageURL: user.imageURL,
+                        links: user.links,
+                        description: user.description
+                    })
+                })
+                .catch(err => {
+                    console.log(err)
+                })    
 
         } else if(this.state.language === 'Angular') {
             axios
-                .put('/api/angular', {languages})
+                .put('/api/angular', {angular})
                 .then( () => {
                     alert('Submitted!')
                 })
@@ -150,9 +187,34 @@ class Accepted extends Component {
                 .then(() => {
                     this.closeModal()
                 }) 
+
+                const newValues = {
+                    challenge_id: this.state.challenge_id,
+                    developer_id: this.state.developer_id,
+                    imageURL: this.state.imageURL,
+                    links: this.state.links,
+                    description: this.state.description,
+                    tool: 2
+                }    
+
+            axios
+                .put('/api/completed', {newValues})
+                .then(response => {
+                    const user = response.data[0]
+                    this.setState({
+                        challenge_id: user.challenge_id,
+                        developer_id: user.developer_id,
+                        imageURL: user.imageURL,
+                        links: user.links,
+                        description: user.description
+                    })
+                })
+                .catch(err => {
+                    console.log(err)
+                })    
         } else if(this.state.language === 'Vue') {
             axios
-                .put('/api/vue', {languages})
+                .put('/api/vue', {vue})
                 .then( () => {
                     alert('Submitted!')
                 })
@@ -160,34 +222,33 @@ class Accepted extends Component {
                 .put('/api/vue/one', {update})
                 .then(() => {
                     this.closeModal()
-                })    
-        }
-
-
-
-        const newValues = {
-            challenge_id: this.state.challenge_id,
-            developer_id: this.state.developer_id,
-            imageURL: this.state.imageURL,
-            links: this.state.links,
-            description: this.state.description
-        }
-
-        axios
-            .put('/api/completed', {newValues})
-            .then(response => {
-                const user = response.data[0]
-                this.setState({
-                    challenge_id: user.challenge_id,
-                    developer_id: user.developer_id,
-                    imageURL: user.imageURL,
-                    links: user.links,
-                    description: user.description
                 })
-            })
-            .catch(err => {
-                console.log(err)
-            })
+                
+                const newValues = {
+                    challenge_id: this.state.challenge_id,
+                    developer_id: this.state.developer_id,
+                    imageURL: this.state.imageURL,
+                    links: this.state.links,
+                    description: this.state.description,
+                    tool: 3
+                }    
+
+            axios
+                .put('/api/completed', {newValues})
+                .then(response => {
+                    const user = response.data[0]
+                    this.setState({
+                        challenge_id: user.challenge_id,
+                        developer_id: user.developer_id,
+                        imageURL: user.imageURL,
+                        links: user.links,
+                        description: user.description
+                    })
+                })
+                .catch(err => {
+                    console.log(err)
+                })    
+        }    
     }
     
 

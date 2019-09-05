@@ -27,7 +27,6 @@ class Chart extends Component {
             axios.get(`/api/vue/data/${id}`)
 
         ]).then(axios.spread((first, second, third) => {
-            console.log(first.data)
             chartData.push(first.data[0].max, second.data[0].max, third.data[0].max)
         }))
         .then(() => {

@@ -13,15 +13,14 @@ class Completed extends Component {
 
     componentDidMount() {
         this.getChallenge(this.props.location.state.challenge_id)
-
     }
 
     getChallenge = (id) => {
         if (id) axios
             .get(`/api/completed/${id}`)
             .then(response => {
-                const user = response.data
                 this.setState({ completed: response.data })
+                console.log(response.data)
             })
     }
 
@@ -37,13 +36,34 @@ class Completed extends Component {
 
                     </div>
                     {this.state.completed.map((completed, index) => {
+                       if(completed.tool === 1){
                         return (
                             <div className="completed-user">
                                 <img src={completed.profile_picture} alt="" />
                                 <h1>Username: {completed.username}</h1>
                                 <p>Github: <a href={completed.links} target="_blank" rel="noopener noreferrer">{completed.links}</a></p>
+                                <p>Tool Used: React</p>
                             </div>
                         )
+                       }else if(completed.tool === 2){
+                        return (
+                            <div className="completed-user">
+                                <img src={completed.profile_picture} alt="" />
+                                <h1>Username: {completed.username}</h1>
+                                <p>Github: <a href={completed.links} target="_blank" rel="noopener noreferrer">{completed.links}</a></p>
+                                <p>Tool Used: Angular</p>
+                            </div>
+                        )
+                       }else if(completed.tool === 3){
+                        return (
+                            <div className="completed-user">
+                                <img src={completed.profile_picture} alt="" />
+                                <h1>Username: {completed.username}</h1>
+                                <p>Github: <a href={completed.links} target="_blank" rel="noopener noreferrer">{completed.links}</a></p>
+                                <p>Tool Used: Vue</p>
+                            </div>
+                        )
+                       }
                     })}
                 </div>
             </div>
