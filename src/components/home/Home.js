@@ -3,12 +3,9 @@ import Navigation from '../navigation/Navigation';
 import Chart from '../chartjs/Chart';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
-import heart from './heart.png'
 import grayHeart from './gray-heart.png'
 import chart from './chart.png';
-import { Doughnut } from 'react-chartjs-2';
-import ReactDOM from 'react-dom';
-import { Navbar, Nav } from 'react-bootstrap'
+import Responsive from '../navigation/Responsive'
 import { Link } from 'react-router-dom';
 // ReactModal.setAppElement('#el');
 const customStyles = {
@@ -108,7 +105,9 @@ class Home extends Component {
     render() {
         return (
             <div className="row">
+                <Responsive />
                 <Navigation logOut={this.props.logOut} />
+                
                 {this.state.isLoading
                     ?
                     <div className="loader">

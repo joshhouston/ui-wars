@@ -52,7 +52,10 @@ body {
       color: #FFF;
       padding-top: 3vh;
       height: 5em;
-
+      
+      p {
+          font-size: 0.8rem
+      }
       &:hover {
           cursor: pointer;
       }
@@ -97,7 +100,13 @@ body {
   }
 
   .responsive {
-      display: none;
+      
+  }
+
+  .MuiButton-label {
+    padding-top: 10px;
+    padding-left: 20px; 
+    color: #fff;
   }
 
   //Landing Page

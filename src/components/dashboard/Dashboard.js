@@ -8,7 +8,7 @@ import edit from './edit-icon.png';
 import {Link} from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 import Accepted from '../accepted/Accepted';
-
+import Responsive from '../navigation/Responsive'
 
 class Dashboard extends Component {
     constructor() {
@@ -55,6 +55,7 @@ class Dashboard extends Component {
         return (
 
             <div className='dashboard'>
+                <Responsive />
                 <Navigation logOut={this.logOutUser} />
                 {this.state.isLoading
                     ?

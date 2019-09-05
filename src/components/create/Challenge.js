@@ -6,6 +6,7 @@ import firebase from 'firebase';
 import firebaseConfig from '../../firebase.js';
 import Loader from 'react-loader-spinner';
 import Button from '@material-ui/core/Button'
+import Responsive from '../navigation/Responsive'
 
 
 firebase.initializeApp(firebaseConfig)
@@ -95,7 +96,7 @@ class Challenge extends Component {
     render() {
         return (
             <div className='row'>
-
+                <Responsive />
                 <Navigation />
                 {this.state.isLoading
                     ?

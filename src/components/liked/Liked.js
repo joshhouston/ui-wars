@@ -3,6 +3,8 @@ import Navigation from '../navigation/Navigation';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
 import Button from '@material-ui/core/Button';
+import Responsive from '../navigation/Responsive'
+
 
 class Liked extends Component {
     constructor(){
@@ -44,8 +46,8 @@ class Liked extends Component {
     render(){
         return (
             <div className="row">
+                <Responsive />
                 <Navigation />
-                
                 {this.state.isLoading
                     ?
                     <div className="loader">

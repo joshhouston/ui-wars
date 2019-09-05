@@ -16,59 +16,28 @@ function Navigation(props) {
                 <Link to='/Home' >
                     <div className='nav-row'>
                             <img src={home} alt=""/>
-                            Home
+                           <p>Home</p>
                     </div>
                 </Link>
 
                 <Link to='/dashboard'>
                     <div className='nav-row'>
                             <img src={dashboard} alt=""/>
-                            Dashboard
+                            <p> Dashboard</p>
                     </div>
                 </Link>
 
                 <Link to='/liked'>
                     <div className="nav-row">
                             <img src={heart} alt=""/>
-                            Likes
+                            <p>Likes</p>
                     </div>
                 </Link>
                 
                 <Link to='/challenge'>
                     <div className="nav-row">
                             <img src={add} alt=""/>
-                            Create
-                    </div>
-                </Link>
-                <Link to='/landing'>
-                    <div className="nav-row">
-                        <img onClick={props.logOut} src={logout}alt=""/>
-                    </div>
-                </Link>
-            </ul>
-
-            <ul className="responsive">
-                <Link to='/Home' >
-                    <div className='nav-row'>
-                            Home
-                    </div>
-                </Link>
-
-                <Link to='/dashboard'>
-                    <div className='nav-row'>
-                            Dashboard
-                    </div>
-                </Link>
-
-                <Link to='/liked'>
-                    <div className="nav-row">
-                            Likes
-                    </div>
-                </Link>
-                
-                <Link to='/challenge'>
-                    <div className="nav-row">
-                            Create
+                            <p>Create</p>
                     </div>
                 </Link>
                 <Link to='/landing'>
