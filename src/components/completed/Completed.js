@@ -20,7 +20,6 @@ class Completed extends Component {
             .get(`/api/completed/${id}`)
             .then(response => {
                 this.setState({ completed: response.data })
-                console.log(response.data)
             })
     }
 
