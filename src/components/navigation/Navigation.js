@@ -16,24 +16,28 @@ function Navigation(props) {
                 <Link to='/Home' >
                     <div className='nav-row'>
                             <img src={home} alt=""/>
+                            Home
                     </div>
                 </Link>
 
                 <Link to='/dashboard'>
                     <div className='nav-row'>
                             <img src={dashboard} alt=""/>
+                            Dashboard
                     </div>
                 </Link>
 
                 <Link to='/liked'>
                     <div className="nav-row">
                             <img src={heart} alt=""/>
+                            Likes
                     </div>
                 </Link>
                 
                 <Link to='/challenge'>
                     <div className="nav-row">
                             <img src={add} alt=""/>
+                            Create
                     </div>
                 </Link>
                 <Link to='/landing'>

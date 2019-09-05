@@ -45,9 +45,10 @@ body {
 
     @include flexCenter();
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       font-family: 'Roboto', sans-serif;
       font-weight: 100;
+      font-size: 0.9rem;
       color: #FFF;
       padding-top: 3vh;
       height: 5em;
