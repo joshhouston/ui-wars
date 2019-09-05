@@ -29,7 +29,7 @@ class Accepted extends Component {
             modalIsOpen: false,
             progress: 0,
             image: '',
-            reactMax: 1,
+            reactMax: 0,
             imageURL: ''
         
         }
@@ -116,13 +116,13 @@ class Accepted extends Component {
     sendToComplete(accepted) {
         const update = {
             challenge_id: this.state.challenge_id,
-            reactMax: 1
+            reactMax: 0
         }
         
         const languages = {
             challenge_id: this.state.challenge_id,
             developer_id: this.state.developer_id,
-            reactMax: 1
+            reactMax: 0
         }
 
         // //Send to respective language table depending on language selected
@@ -131,23 +131,36 @@ class Accepted extends Component {
             axios
                 .post('/api/react', {languages})
                 .then( () => {
-                   alert('submitted!')
+                   alert('Submitted!')
                 })
             axios
                 .put('/api/react/one', {update})
                 .then(() => {
+                    this.closeModal()
                 })
 
         } else if(this.state.language === 'Angular') {
             axios
                 .put('/api/angular', {languages})
                 .then( () => {
+                    alert('Submitted!')
                 })
-        }else if(this.state.language === 'Vue') {
+            axios
+                .put('/api/angular/one', {update})   
+                .then(() => {
+                    this.closeModal()
+                }) 
+        } else if(this.state.language === 'Vue') {
             axios
                 .put('/api/vue', {languages})
                 .then( () => {
+                    alert('Submitted!')
                 })
+            axios
+                .put('/api/vue/one', {update})
+                .then(() => {
+                    this.closeModal()
+                })    
         }
 
 

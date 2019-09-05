@@ -1,3 +1,3 @@
-INSERT INTO angular (challenge_id, developer_id)
-VALUES ($1, $2) 
+INSERT INTO angular (challenge_id, developer_id, angular_increment)
+VALUES ($1, $2, $3) 
 RETURNING *;

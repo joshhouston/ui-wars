@@ -62,7 +62,10 @@ app.post('/api/react/', uc.addToReact);
 app.put('/api/angular', uc.addToAngular);
 app.put('/api/vue', uc.addToVue);
 
+//Increments
 app.put('/api/react/one', uc.reactOne)
+app.put('/api/angular/one', uc.angularOne)
+app.put('/api/vue/one', uc.vueOne)
 
 //Completed Endpoint
 app.get('/api/completed/:id', uc.getCompleted)

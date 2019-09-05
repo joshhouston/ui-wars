@@ -27,7 +27,7 @@ class Chart extends Component {
             axios.get(`/api/vue/data/${id}`)
 
         ]).then(axios.spread((first, second, third) => {
-            console.log(first.data[0])
+            console.log(first.data)
             chartData.push(first.data[0].max, second.data[0].max, third.data[0].max)
         }))
         .then(() => {
@@ -35,20 +35,20 @@ class Chart extends Component {
                 data: {
                     labels: [
                         'React',
-                        'Vue',
-                        'Angular'
+                        'Angular',
+                        'Vue'
                     ],
                     datasets: [{
                         data: chartData,
                         backgroundColor: [
                             '#61DAFB',
-                            '#41B883',
-                            '#DD1B16'
+                            '#DD1B16',
+                            '#41B883'
                         ],
                         borderColor: [
                             '#61DAFB',
-                            '#41B883',
-                            '#DD1B16'
+                            '#DD1B16',
+                            '#41B883'
                         ],
                         options: {
                             scales: {

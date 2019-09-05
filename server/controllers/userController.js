@@ -172,6 +172,28 @@ module.exports = {
             return res.status(404).json('not logged in')
         }
     },
+    
+    angularOne: async(req, res) => {
+        const {challenge_id, reactMax} = req.body.update
+        const db = req.app.get('db')
+        if(req.session.user) {
+            const user = await db.update_angular([challenge_id, reactMax])
+            return res.status(200).json(user)
+        }else {
+            return res.status(404).json('not logged in')
+        }
+    },
+
+    vueOne: async(req, res) => {
+        const {challenge_id, reactMax} = req.body.update
+        const db = req.app.get('db')
+        if(req.session.user) {
+            const user = await db.update_vue([challenge_id, reactMax])
+            return res.status(200).json(user)
+        }else {
+            return res.status(404).json('not logged in')
+        }
+    },
 
     getAngularData: async (req, res) => {
         const db = req.app.get('db')
@@ -186,10 +208,10 @@ module.exports = {
     },
 
     addToAngular: async(req, res) => {
-        const {challenge_id, developer_id} = req.body.languages
+        const {challenge_id, developer_id, reactMax} = req.body.languages
         const db = req.app.get('db')
         if(req.session.user) {
-            const user = await db.add_to_angular([challenge_id, developer_id])
+            const user = await db.add_to_angular([challenge_id, developer_id, reactMax])
             return res.status(200).json(user)
         }else {
             return res.status(404).json('not logged in')
@@ -208,10 +230,10 @@ module.exports = {
     },
     
     addToVue: async(req, res) => {
-        const {challenge_id, developer_id} = req.body.languages
+        const {challenge_id, developer_id, reactMax} = req.body.languages
         const db = req.app.get('db')
         if(req.session.user) {
-            const user = await db.add_to_vue([challenge_id, developer_id])
+            const user = await db.add_to_vue([challenge_id, developer_id, reactMax])
             return res.status(200).json(user)
         }else {
             return res.status(404).json('not logged in')
