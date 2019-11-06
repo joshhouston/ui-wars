@@ -16,7 +16,7 @@ export default function SimpleMenu() {
   }
 
   return (
-    <div class='responsive'>
+    <div className='responsive'>
       <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
         Menu
       </Button>

@@ -23,7 +23,7 @@ class Landing extends Component {
                     <div className="btn-contain">
                         <div className="btn-skew-contain">
                             <Link to='/login'>
-                                <a href="http://mediamilitia.com" class="btn-skew">
+                                <a href="http://mediamilitia.com" className="btn-skew">
                                 <span className='nounder'>Login</span>
                                 </a>
                             </Link>
@@ -33,7 +33,7 @@ class Landing extends Component {
                     <div className="btn-contain">
                     <div className="btn-skew-contain">
                         <Link to='/register'>
-                            <a href="http://mediamilitia.com" class="btn-skew">
+                            <a href="http://mediamilitia.com" className="btn-skew">
                             <span>Register</span>
                             </a>
                         </Link>

@@ -8,16 +8,7 @@ import chart from './chart.png';
 import Responsive from '../navigation/Responsive'
 import { Link } from 'react-router-dom';
 // ReactModal.setAppElement('#el');
-const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)'
-    }
-};
+
 
 
 

@@ -26,6 +26,7 @@ class Dashboard extends Component {
     }
 
     componentDidMount() {
+        this.props.getUser();
         axios
             .get('/api/dashboard')
             .then(response => {
@@ -39,6 +40,9 @@ class Dashboard extends Component {
                     isLoading: false
                 })
             })
+            .catch(err => {
+                console.log(err)
+            })
             
         
     }
@@ -51,7 +55,14 @@ class Dashboard extends Component {
     }
 
     render() {
-     
+        if(!this.props.user) {
+            this.setState({redirect: true});
+        }
+
+        if(this.state.redirect){
+            alert('Please login');
+            return <Redirect to="/landing" />;
+        }
         return (
 
             <div className='dashboard'>
