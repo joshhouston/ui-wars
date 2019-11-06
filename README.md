@@ -1,5 +1,8 @@
 UI Wars is  web application where developers of all skill levels can come to practice their UI skills and compare them to others. Users can see real time data visualization of which tools were used to develop an apllication and how many developers completed a challenge.
 
+Test account credentials:
+username: b
+password: b
 
 Landing Page
 <img width="880" alt="challenges" src="https://user-images.githubusercontent.com/24482246/68330773-6dc75e00-0099-11ea-8912-cba650fd3b04.PNG">
