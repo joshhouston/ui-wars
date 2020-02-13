@@ -10,8 +10,8 @@ $breakpoint-l: 768px;
 }
 
 body {
-    background: rgb(41,42,53);
-    background: linear-gradient(180deg, rgba(41,42,53,1) 0%, rgba(32,33,44,1) 35%, rgba(23,23,27,1) 100%) fixed;
+    background: rgb(255, 255, 255);
+    // background: linear-gradient(180deg, rgba(41,42,53,1) 0%, rgba(32,33,44,1) 35%, rgba(23,23,27,1) 100%) fixed;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -26,8 +26,8 @@ body {
 .nav-main {
     display: flex;
     flex-direction: column;
-    background: rgb(47,49,62);
-    background: linear-gradient(180deg, rgba(47,49,62,1) 0%, rgba(36,39,52,1) 35%, rgba(31,33,46,1) 100%);
+    background: #292929;
+    // background: linear-gradient(180deg, rgba(47,49,62,1) 0%, rgba(36,39,52,1) 35%, rgba(31,33,46,1) 100%);
     height: 100vh;
     width: 100px;
     position: fixed;
@@ -61,12 +61,6 @@ body {
       }
   }
 
-  .nav-row img {
-      display: flex;
-      align-items: center;
-      height: 25px;
-      width: 25px;
-  }
 
   .nav-col {
       height: 50vh;
@@ -74,6 +68,8 @@ body {
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
+      align-items: flex-start;
+      margin-left: 1.5em;
   }
 
   .nav-main button {
@@ -111,7 +107,7 @@ body {
 }
 
 .landing-header {
-    color: #FFF;
+    color: #141414;
     font-size: 3em;
     font-family: 'Russo One', sans-serif;
     text-shadow: 20px 10px 10px grey;  
@@ -372,7 +368,7 @@ body {
 
 .home-header {
     margin-top: 1em;
-    color: #FFF;
+    color: #292929;
     font-size: 2em;
     font-family: 'Russo One', sans-serif;
     text-shadow: 20px 10px 10px grey;  
@@ -527,7 +523,7 @@ body {
     // display: none;
     flex-direction: column;
     justify-content: space-evenly;
-    color: #FFF;
+    color: #272727;
 }
 
 .ui-tools {
@@ -536,7 +532,7 @@ body {
     justify-content: space-evenly;
     width: 200px;
     text-align: right;
-    color: #FFF;
+    color: #272727;
     margin-right: 1em;
 }
 
@@ -746,6 +742,6 @@ body {
 }
 
 .link {
-    color: #FFF;
+    color: #272727;
     text-decoration: none;
 }

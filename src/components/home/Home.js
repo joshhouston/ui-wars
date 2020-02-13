@@ -109,7 +109,7 @@ class Home extends Component {
 
 
                         <div className="challenge-header">
-                            <h1 className='home-header' >Challenges</h1>
+                            <h1 className='home-header' >Challenge</h1>
                         </div>
                         {this.state.allChallenges.map((challenge, index) => {
                             return (
@@ -157,26 +157,6 @@ class Home extends Component {
 
                                             <Chart id={challenge.challenge_id} />
                                         </div>
-                                    </div>
-
-                                    <div className='ui-tools' >
-                                        <h4>Tools</h4>
-                                        <div className="tool-icons">
-                                            <div className='ui-frameworks' >
-                                                <h4>Framework/Library</h4>
-                                                <i className="devicon-angularjs-plain"></i>
-                                                <i className="devicon-react-original"></i>
-                                                <i className="devicon-vuejs-plain"></i>
-                                            </div>
-
-                                            <div className='ui-stylers' >
-                                                <h4>Stylers</h4>
-                                                <i className="devicon-css3-plain"></i>
-                                                <i className="devicon-sass-original"></i>
-                                                <i className="devicon-less-plain-wordmark"></i>
-                                            </div>
-                                        </div>
-
                                     </div>
 
                                 </div>
