@@ -20,17 +20,15 @@ class Landing extends Component {
                     <h1>UI Wars</h1>
                 </div>
                 <div className="landing-buttons">
-                    <div className="btn-contain">
-                        <div className="btn-skew-contain">
-                            <Link to='/login'>
-                                <a href="http://mediamilitia.com" className="btn-skew">
-                                <span className='nounder'>Login</span>
-                                </a>
-                            </Link>
-                        </div>
-                    </div>
+                    <Link to='/register'>
+                        <Button variant='contained'>Register </Button>
+                    </Link>
 
-                    <div className="btn-contain">
+                    <Link to='/login'>
+                        <Button variant='contained' color="primary">Login </Button>
+                    </Link>
+
+                    {/* <div className="btn-contain">
                     <div className="btn-skew-contain">
                         <Link to='/register'>
                             <a href="http://mediamilitia.com" className="btn-skew">
@@ -39,6 +37,16 @@ class Landing extends Component {
                         </Link>
                     </div>
                     </div>
+
+                    <div className="btn-contain">
+                        <div className="btn-skew-contain">
+                            <Link to='/login'>
+                                <a href="http://mediamilitia.com" className="btn-skew">
+                                <span className='nounder'>Login</span>
+                                </a>
+                            </Link>
+                        </div>
+                    </div> */}
                 </div>
             </div>
         )

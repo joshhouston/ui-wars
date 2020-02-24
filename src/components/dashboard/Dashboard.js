@@ -65,7 +65,7 @@ class Dashboard extends Component {
         }
         return (
 
-            <div className='dashboard'>
+            <div className='row'>
                 <Responsive />
                 <Navigation logOut={this.logOutUser} />
                 {this.state.isLoading
