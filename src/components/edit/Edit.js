@@ -3,6 +3,8 @@ import axios from 'axios';
 import Navigation from '../navigation/Navigation';
 import FileUploader from 'react-firebase-file-uploader';
 import firebase from 'firebase';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 import firebaseConfig from '../../firebase.js';
 
 
@@ -97,35 +99,39 @@ class Edit extends Component {
                                 className='uploader'
                             />
                         <div className="form-row">
-                            Name:
-                            <input
-                                className='form-inputs'
-                                placeholder={this.state.fullname}
+                           
+                            <TextField
+                                id="outlined-basic"
+                                label="Name"
+                                variant="outlined"
                                 name='fullname'
                                 onChange={(e) => this.handleChange(e)}
                             />
+                            
                         </div>
 
                         <div className="form-row">
-                            Email:
-                            <input
-                                className='form-inputs'
-                                placeholder={this.state.email}
+                            <TextField
+                                id="outlined-basic"
+                                label="Email"
+                                variant="outlined"
                                 name='email'
                                 onChange={(e) => this.handleChange(e)}
                             />
+                            
                         </div>
 
                         <div className="form-row">
-                            Github:
-                            <input
-                                className='form-inputs'
-                                placeholder={this.state.github}
+                            <TextField
+                                id="outlined-basic"
+                                label="Github"
+                                variant="outlined"
                                 name='github'
                                 onChange={(e) => this.handleChange(e)}
                             />
+                            
                         </div>
-                    <button onClick={(e) => this.editProfile(e)} >Submit Changes</button>
+                        <Button onClick={(e) => this.editProfile(e)} variant='outlined'>Submit </Button>
                     </form>
                 </div>
             </div>

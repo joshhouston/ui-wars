@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import FileUploader from 'react-firebase-file-uploader';
 import firebase from 'firebase';
-// ReactModal.setAppElement('#el');
+import TextField from '@material-ui/core/TextField';
+
 const customStyles = {
     content : {
       top                   : '50%',
@@ -273,7 +273,7 @@ class Accepted extends Component {
                                     onSubmit={e => {e.preventDefault()}}
                                     className='complete_challenge' >
                                     <div className='uploading'>
-                                        Upload a photo/gif of your rendition
+                                        Upload a photo/gif
                                         <FileUploader 
                                             accept="image/*"
                                             name='imageURL'
@@ -293,20 +293,27 @@ class Accepted extends Component {
                                                 </select>
                                            </div>
                                            
-                                        </div> 
-                                        <input
-                                            placeholder='Enter github/codepen link...'
+                                        </div>
+                                        <TextField
+                                            id="outlined-basic"
+                                            label="Enter github/codepen link..."
+                                            variant="outlined"
                                             name='links'
                                             onChange={(e) => this.handleChange(e)}
                                         />
-                                        <input
-                                            placeholder='Description...'
+                                     
+                                        <TextField
+                                            id="outlined-basic"
+                                            label="Enter description..."
+                                            variant="outlined"
                                             name='description'
                                             onChange={(e) => this.handleChange(e)}
                                         />
+                                        
+                                    
                                         <div className="form-button">
                                             <button className="accept-button" onClick={() => this.sendToComplete(accepted)}>Submit</button> 
-                                            <button className='accept-button' onClick={this.closeModal} >close</button>  
+                                            <button className='accept-button' onClick={this.closeModal} >Close</button>  
                                         </div>
                                     </form>            
                                 </Modal>

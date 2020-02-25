@@ -4,11 +4,13 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 import {getUser} from '../../redux/reducer';
 import {Redirect} from 'react-router-dom';
-import edit from './edit-icon.png';
 import {Link} from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 import Accepted from '../accepted/Accepted';
-import Responsive from '../navigation/Responsive'
+import Responsive from '../navigation/Responsive';
+import EditIcon from '@material-ui/icons/Edit';
+
+
 
 class Dashboard extends Component {
     constructor() {
@@ -94,7 +96,7 @@ class Dashboard extends Component {
 
                             <div className="edit-icon">
                                 <Link to='/edit'>
-                                    <img src={edit} title='Edit Profile' alt="edit-button"/>
+                                    <EditIcon />
                                 </Link>
                             </div>
 

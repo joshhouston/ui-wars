@@ -6,6 +6,7 @@
   "proxy": "http://localhost:5090",
   "dependencies": {
     "@material-ui/core": "^4.9.2",
+    "@material-ui/icons": "^4.9.1",
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.4.1",

@@ -145,24 +145,7 @@ class Challenge extends Component {
                                 name="links"
                                 onChange={(e) => this.handleChange(e)}
                             />
-                            {/* <input
-                                className='login-input'
-                                placeholder='Enter a title...'
-                                name='title'
-                                onChange={(e) => this.handleChange(e)}
-                            />
-                            <input
-                                className='login-input'
-                                placeholder='Enter a description...'
-                                name='description'
-                                onChange={(e) => this.handleChange(e)}
-                            /> */}
-                            {/* <input
-                                className='login-input'
-                                placeholder='Enter external links...'
-                                name='links'
-                                onChange={(e) => this.handleChange(e)}
-                            /> */}
+                            
                             <Button onClick={this.sendToDatabase} variant='outlined'>Submit </Button>
 
                         </form>
